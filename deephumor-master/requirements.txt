@@ -1,0 +1,8 @@
+numpy
+torch
+torchvision
+requests
+lxml
+langdetect
+python-Levenshtein
+pillow
