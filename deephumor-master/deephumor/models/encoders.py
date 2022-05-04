@@ -32,6 +32,13 @@ class ImageEncoder(nn.Module):
         self.spatial_features = spatial_features
 
         resnet = models.resnet50(pretrained=True)
+        
+        # Use resnet34 as encoder
+        # resnet = models.resnet34(pretrained=True)
+        
+        # Use resent101 as encoder
+        # resnet = models.resnet101(pretrained=True)
+        
         for p in resnet.parameters():
             p.requires_grad = False
         modules = list(resnet.children())[:-2]
