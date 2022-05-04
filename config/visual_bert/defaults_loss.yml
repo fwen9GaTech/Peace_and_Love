@@ -1,0 +1,17 @@
+includes:
+- ./defaults.yaml
+
+model_config:
+  visual_bert:
+    training_head_type: classification
+    num_labels: 2
+    losses:
+    - soft_label_cross_entropy
+
+
+training:
+  seed: 27716496
+  early_stop:
+    enabled: true
+
+

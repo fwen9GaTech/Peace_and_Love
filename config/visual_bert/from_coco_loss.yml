@@ -1,0 +1,24 @@
+includes:
+- ./defaults.yaml
+
+model_config:
+  visual_bert:
+    training_head_type: classification
+    num_labels: 2
+    losses:
+    - soft_label_cross_entropy
+
+checkpoint:
+  resume_pretrained: true
+  resume_zoo: visual_bert.pretrained.coco
+
+training:
+  seed: 48425275
+  early_stop:
+    enabled: true
+
+optimizer:
+  type: adam_w
+  params:
+    lr: 5e-5
+    eps: 1e-8

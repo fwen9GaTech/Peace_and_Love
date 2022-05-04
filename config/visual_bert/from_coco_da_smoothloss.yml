@@ -1,0 +1,71 @@
+includes:
+- ./defaults.yaml
+
+model_config:
+  visual_bert:
+    training_head_type: classification
+    num_labels: 2
+    losses:
+    - label_smoothing_cross_entropy
+
+checkpoint:
+  resume_pretrained: true
+  resume_zoo: visual_bert.pretrained.coco
+
+training:
+  seed: 48425275
+  early_stop:
+    enabled: true
+
+optimizer:
+  type: adam_w
+  params:
+    lr: 5e-5
+    eps: 1e-8
+
+dataset_config:
+  hateful_memes:
+    return_features_info: true
+    processors:
+      text_processor:
+        type: bert_tokenizer
+        params:
+          tokenizer_config:
+            type: bert-base-uncased
+            params:
+              do_lower_case: true
+          mask_probability: 0
+          max_seq_length: 128
+      image_processor:
+        type: torchvision_transforms
+        params:
+          transforms:
+            - type: RandomHorizontalFlip
+              params:
+                p: 0.5
+            - type: RandomVerticalFlip
+              params:
+                p: 0.5
+            - type: Normalize
+              params:
+                mean: [ 0.4965, 0.4645, 0.4412 ]
+                std: [ 0.2146, 0.2153, 0.2238 ]
+            - type: RandomRotation
+              params:
+                degrees: [-30, 30] 
+            - type: RandomCrop
+              params:
+                size: [384, 384]
+            - type: Grayscale
+              params:
+                num_output_channels: 3
+            - type: ColorJitter
+              params:
+                brightness: 0.5
+                contrast: 0.5
+                saturation: 0.5
+                hue: 0.5
+            - type: GaussianBlur
+              params:
+                kernel_size: [5, 9]
+                sigma: [0.1, 5]

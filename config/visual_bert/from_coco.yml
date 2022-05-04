@@ -1,0 +1,12 @@
+includes:
+- ./defaults.yaml
+
+checkpoint:
+  resume_pretrained: true
+  resume_zoo: visual_bert.pretrained.coco
+
+training:
+  seed: 48425275
+  early_stop:
+    enabled: true
+

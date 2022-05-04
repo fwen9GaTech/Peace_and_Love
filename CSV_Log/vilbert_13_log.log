@@ -1,0 +1,1222 @@
+2022-04-25T21:09:56 | INFO | mmf : Logging to: ./save/train.log
+2022-04-25T21:09:56 | INFO | mmf_cli.run : Namespace(config_override=None, local_rank=None, opts=['config=mmf-hateful-memes/projects/hateful_memes/configs/vilbert/defaults.yaml', 'model=vilbert', 'dataset=hateful_memes'])
+2022-04-25T21:09:56 | INFO | mmf_cli.run : Torch version: 1.9.0+cu102
+2022-04-25T21:09:56 | INFO | mmf.utils.general : CUDA Device 0 is: Tesla P100-PCIE-16GB
+2022-04-25T21:09:56 | INFO | mmf_cli.run : Using seed 56072377
+2022-04-25T21:09:56 | INFO | mmf.trainers.mmf_trainer : Loading datasets
+2022-04-25T21:20:51 | INFO | mmf.datasets.multi_datamodule : Multitasking disabled by default for single dataset training
+2022-04-25T21:20:51 | INFO | mmf.datasets.multi_datamodule : Multitasking disabled by default for single dataset training
+2022-04-25T21:20:51 | INFO | mmf.datasets.multi_datamodule : Multitasking disabled by default for single dataset training
+2022-04-25T21:20:51 | INFO | mmf.trainers.mmf_trainer : Loading model
+2022-04-25T21:21:07 | INFO | mmf.trainers.mmf_trainer : Loading optimizer
+2022-04-25T21:21:07 | INFO | mmf.trainers.mmf_trainer : Loading metrics
+2022-04-25T21:21:07 | INFO | mmf.trainers.mmf_trainer : ===== Model =====
+2022-04-25T21:21:07 | INFO | mmf.trainers.mmf_trainer : ViLBERT(
+  (model): ViLBERTForClassification(
+    (bert): ViLBERTBase(
+      (embeddings): BertEmbeddings(
+        (word_embeddings): Embedding(30522, 768, padding_idx=0)
+        (position_embeddings): Embedding(512, 768)
+        (token_type_embeddings): Embedding(2, 768)
+        (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+        (dropout): Dropout(p=0.1, inplace=False)
+      )
+      (v_embeddings): BertImageFeatureEmbeddings(
+        (image_embeddings): Linear(in_features=2048, out_features=1024, bias=True)
+        (image_location_embeddings): Linear(in_features=5, out_features=1024, bias=True)
+        (LayerNorm): LayerNorm((1024,), eps=1e-12, elementwise_affine=True)
+        (dropout): Dropout(p=0.1, inplace=False)
+      )
+      (encoder): BertEncoder(
+        (layer): ModuleList(
+          (0): BertLayer(
+            (attention): BertAttention(
+              (self): BertSelfAttention(
+                (query): Linear(in_features=768, out_features=768, bias=True)
+                (key): Linear(in_features=768, out_features=768, bias=True)
+                (value): Linear(in_features=768, out_features=768, bias=True)
+                (dropout): Dropout(p=0.1, inplace=False)
+              )
+              (output): BertSelfOutput(
+                (dense): Linear(in_features=768, out_features=768, bias=True)
+                (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+                (dropout): Dropout(p=0.1, inplace=False)
+              )
+            )
+            (intermediate): BertIntermediate(
+              (dense): Linear(in_features=768, out_features=3072, bias=True)
+            )
+            (output): BertOutput(
+              (dense): Linear(in_features=3072, out_features=768, bias=True)
+              (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+          (1): BertLayer(
+            (attention): BertAttention(
+              (self): BertSelfAttention(
+                (query): Linear(in_features=768, out_features=768, bias=True)
+                (key): Linear(in_features=768, out_features=768, bias=True)
+                (value): Linear(in_features=768, out_features=768, bias=True)
+                (dropout): Dropout(p=0.1, inplace=False)
+              )
+              (output): BertSelfOutput(
+                (dense): Linear(in_features=768, out_features=768, bias=True)
+                (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+                (dropout): Dropout(p=0.1, inplace=False)
+              )
+            )
+            (intermediate): BertIntermediate(
+              (dense): Linear(in_features=768, out_features=3072, bias=True)
+            )
+            (output): BertOutput(
+              (dense): Linear(in_features=3072, out_features=768, bias=True)
+              (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+          (2): BertLayer(
+            (attention): BertAttention(
+              (self): BertSelfAttention(
+                (query): Linear(in_features=768, out_features=768, bias=True)
+                (key): Linear(in_features=768, out_features=768, bias=True)
+                (value): Linear(in_features=768, out_features=768, bias=True)
+                (dropout): Dropout(p=0.1, inplace=False)
+              )
+              (output): BertSelfOutput(
+                (dense): Linear(in_features=768, out_features=768, bias=True)
+                (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+                (dropout): Dropout(p=0.1, inplace=False)
+              )
+            )
+            (intermediate): BertIntermediate(
+              (dense): Linear(in_features=768, out_features=3072, bias=True)
+            )
+            (output): BertOutput(
+              (dense): Linear(in_features=3072, out_features=768, bias=True)
+              (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+          (3): BertLayer(
+            (attention): BertAttention(
+              (self): BertSelfAttention(
+                (query): Linear(in_features=768, out_features=768, bias=True)
+                (key): Linear(in_features=768, out_features=768, bias=True)
+                (value): Linear(in_features=768, out_features=768, bias=True)
+                (dropout): Dropout(p=0.1, inplace=False)
+              )
+              (output): BertSelfOutput(
+                (dense): Linear(in_features=768, out_features=768, bias=True)
+                (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+                (dropout): Dropout(p=0.1, inplace=False)
+              )
+            )
+            (intermediate): BertIntermediate(
+              (dense): Linear(in_features=768, out_features=3072, bias=True)
+            )
+            (output): BertOutput(
+              (dense): Linear(in_features=3072, out_features=768, bias=True)
+              (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+          (4): BertLayer(
+            (attention): BertAttention(
+              (self): BertSelfAttention(
+                (query): Linear(in_features=768, out_features=768, bias=True)
+                (key): Linear(in_features=768, out_features=768, bias=True)
+                (value): Linear(in_features=768, out_features=768, bias=True)
+                (dropout): Dropout(p=0.1, inplace=False)
+              )
+              (output): BertSelfOutput(
+                (dense): Linear(in_features=768, out_features=768, bias=True)
+                (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+                (dropout): Dropout(p=0.1, inplace=False)
+              )
+            )
+            (intermediate): BertIntermediate(
+              (dense): Linear(in_features=768, out_features=3072, bias=True)
+            )
+            (output): BertOutput(
+              (dense): Linear(in_features=3072, out_features=768, bias=True)
+              (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+          (5): BertLayer(
+            (attention): BertAttention(
+              (self): BertSelfAttention(
+                (query): Linear(in_features=768, out_features=768, bias=True)
+                (key): Linear(in_features=768, out_features=768, bias=True)
+                (value): Linear(in_features=768, out_features=768, bias=True)
+                (dropout): Dropout(p=0.1, inplace=False)
+              )
+              (output): BertSelfOutput(
+                (dense): Linear(in_features=768, out_features=768, bias=True)
+                (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+                (dropout): Dropout(p=0.1, inplace=False)
+              )
+            )
+            (intermediate): BertIntermediate(
+              (dense): Linear(in_features=768, out_features=3072, bias=True)
+            )
+            (output): BertOutput(
+              (dense): Linear(in_features=3072, out_features=768, bias=True)
+              (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+          (6): BertLayer(
+            (attention): BertAttention(
+              (self): BertSelfAttention(
+                (query): Linear(in_features=768, out_features=768, bias=True)
+                (key): Linear(in_features=768, out_features=768, bias=True)
+                (value): Linear(in_features=768, out_features=768, bias=True)
+                (dropout): Dropout(p=0.1, inplace=False)
+              )
+              (output): BertSelfOutput(
+                (dense): Linear(in_features=768, out_features=768, bias=True)
+                (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+                (dropout): Dropout(p=0.1, inplace=False)
+              )
+            )
+            (intermediate): BertIntermediate(
+              (dense): Linear(in_features=768, out_features=3072, bias=True)
+            )
+            (output): BertOutput(
+              (dense): Linear(in_features=3072, out_features=768, bias=True)
+              (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+          (7): BertLayer(
+            (attention): BertAttention(
+              (self): BertSelfAttention(
+                (query): Linear(in_features=768, out_features=768, bias=True)
+                (key): Linear(in_features=768, out_features=768, bias=True)
+                (value): Linear(in_features=768, out_features=768, bias=True)
+                (dropout): Dropout(p=0.1, inplace=False)
+              )
+              (output): BertSelfOutput(
+                (dense): Linear(in_features=768, out_features=768, bias=True)
+                (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+                (dropout): Dropout(p=0.1, inplace=False)
+              )
+            )
+            (intermediate): BertIntermediate(
+              (dense): Linear(in_features=768, out_features=3072, bias=True)
+            )
+            (output): BertOutput(
+              (dense): Linear(in_features=3072, out_features=768, bias=True)
+              (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+          (8): BertLayer(
+            (attention): BertAttention(
+              (self): BertSelfAttention(
+                (query): Linear(in_features=768, out_features=768, bias=True)
+                (key): Linear(in_features=768, out_features=768, bias=True)
+                (value): Linear(in_features=768, out_features=768, bias=True)
+                (dropout): Dropout(p=0.1, inplace=False)
+              )
+              (output): BertSelfOutput(
+                (dense): Linear(in_features=768, out_features=768, bias=True)
+                (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+                (dropout): Dropout(p=0.1, inplace=False)
+              )
+            )
+            (intermediate): BertIntermediate(
+              (dense): Linear(in_features=768, out_features=3072, bias=True)
+            )
+            (output): BertOutput(
+              (dense): Linear(in_features=3072, out_features=768, bias=True)
+              (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+          (9): BertLayer(
+            (attention): BertAttention(
+              (self): BertSelfAttention(
+                (query): Linear(in_features=768, out_features=768, bias=True)
+                (key): Linear(in_features=768, out_features=768, bias=True)
+                (value): Linear(in_features=768, out_features=768, bias=True)
+                (dropout): Dropout(p=0.1, inplace=False)
+              )
+              (output): BertSelfOutput(
+                (dense): Linear(in_features=768, out_features=768, bias=True)
+                (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+                (dropout): Dropout(p=0.1, inplace=False)
+              )
+            )
+            (intermediate): BertIntermediate(
+              (dense): Linear(in_features=768, out_features=3072, bias=True)
+            )
+            (output): BertOutput(
+              (dense): Linear(in_features=3072, out_features=768, bias=True)
+              (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+          (10): BertLayer(
+            (attention): BertAttention(
+              (self): BertSelfAttention(
+                (query): Linear(in_features=768, out_features=768, bias=True)
+                (key): Linear(in_features=768, out_features=768, bias=True)
+                (value): Linear(in_features=768, out_features=768, bias=True)
+                (dropout): Dropout(p=0.1, inplace=False)
+              )
+              (output): BertSelfOutput(
+                (dense): Linear(in_features=768, out_features=768, bias=True)
+                (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+                (dropout): Dropout(p=0.1, inplace=False)
+              )
+            )
+            (intermediate): BertIntermediate(
+              (dense): Linear(in_features=768, out_features=3072, bias=True)
+            )
+            (output): BertOutput(
+              (dense): Linear(in_features=3072, out_features=768, bias=True)
+              (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+          (11): BertLayer(
+            (attention): BertAttention(
+              (self): BertSelfAttention(
+                (query): Linear(in_features=768, out_features=768, bias=True)
+                (key): Linear(in_features=768, out_features=768, bias=True)
+                (value): Linear(in_features=768, out_features=768, bias=True)
+                (dropout): Dropout(p=0.1, inplace=False)
+              )
+              (output): BertSelfOutput(
+                (dense): Linear(in_features=768, out_features=768, bias=True)
+                (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+                (dropout): Dropout(p=0.1, inplace=False)
+              )
+            )
+            (intermediate): BertIntermediate(
+              (dense): Linear(in_features=768, out_features=3072, bias=True)
+            )
+            (output): BertOutput(
+              (dense): Linear(in_features=3072, out_features=768, bias=True)
+              (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+        )
+        (v_layer): ModuleList(
+          (0): BertImageLayer(
+            (attention): BertImageAttention(
+              (self): BertImageSelfAttention(
+                (query): Linear(in_features=1024, out_features=1024, bias=True)
+                (key): Linear(in_features=1024, out_features=1024, bias=True)
+                (value): Linear(in_features=1024, out_features=1024, bias=True)
+                (dropout): Dropout(p=0.1, inplace=False)
+              )
+              (output): BertImageSelfOutput(
+                (dense): Linear(in_features=1024, out_features=1024, bias=True)
+                (LayerNorm): LayerNorm((1024,), eps=1e-12, elementwise_affine=True)
+                (dropout): Dropout(p=0.1, inplace=False)
+              )
+            )
+            (intermediate): BertImageIntermediate(
+              (dense): Linear(in_features=1024, out_features=1024, bias=True)
+            )
+            (output): BertImageOutput(
+              (dense): Linear(in_features=1024, out_features=1024, bias=True)
+              (LayerNorm): LayerNorm((1024,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+          (1): BertImageLayer(
+            (attention): BertImageAttention(
+              (self): BertImageSelfAttention(
+                (query): Linear(in_features=1024, out_features=1024, bias=True)
+                (key): Linear(in_features=1024, out_features=1024, bias=True)
+                (value): Linear(in_features=1024, out_features=1024, bias=True)
+                (dropout): Dropout(p=0.1, inplace=False)
+              )
+              (output): BertImageSelfOutput(
+                (dense): Linear(in_features=1024, out_features=1024, bias=True)
+                (LayerNorm): LayerNorm((1024,), eps=1e-12, elementwise_affine=True)
+                (dropout): Dropout(p=0.1, inplace=False)
+              )
+            )
+            (intermediate): BertImageIntermediate(
+              (dense): Linear(in_features=1024, out_features=1024, bias=True)
+            )
+            (output): BertImageOutput(
+              (dense): Linear(in_features=1024, out_features=1024, bias=True)
+              (LayerNorm): LayerNorm((1024,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+          (2): BertImageLayer(
+            (attention): BertImageAttention(
+              (self): BertImageSelfAttention(
+                (query): Linear(in_features=1024, out_features=1024, bias=True)
+                (key): Linear(in_features=1024, out_features=1024, bias=True)
+                (value): Linear(in_features=1024, out_features=1024, bias=True)
+                (dropout): Dropout(p=0.1, inplace=False)
+              )
+              (output): BertImageSelfOutput(
+                (dense): Linear(in_features=1024, out_features=1024, bias=True)
+                (LayerNorm): LayerNorm((1024,), eps=1e-12, elementwise_affine=True)
+                (dropout): Dropout(p=0.1, inplace=False)
+              )
+            )
+            (intermediate): BertImageIntermediate(
+              (dense): Linear(in_features=1024, out_features=1024, bias=True)
+            )
+            (output): BertImageOutput(
+              (dense): Linear(in_features=1024, out_features=1024, bias=True)
+              (LayerNorm): LayerNorm((1024,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+          (3): BertImageLayer(
+            (attention): BertImageAttention(
+              (self): BertImageSelfAttention(
+                (query): Linear(in_features=1024, out_features=1024, bias=True)
+                (key): Linear(in_features=1024, out_features=1024, bias=True)
+                (value): Linear(in_features=1024, out_features=1024, bias=True)
+                (dropout): Dropout(p=0.1, inplace=False)
+              )
+              (output): BertImageSelfOutput(
+                (dense): Linear(in_features=1024, out_features=1024, bias=True)
+                (LayerNorm): LayerNorm((1024,), eps=1e-12, elementwise_affine=True)
+                (dropout): Dropout(p=0.1, inplace=False)
+              )
+            )
+            (intermediate): BertImageIntermediate(
+              (dense): Linear(in_features=1024, out_features=1024, bias=True)
+            )
+            (output): BertImageOutput(
+              (dense): Linear(in_features=1024, out_features=1024, bias=True)
+              (LayerNorm): LayerNorm((1024,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+          (4): BertImageLayer(
+            (attention): BertImageAttention(
+              (self): BertImageSelfAttention(
+                (query): Linear(in_features=1024, out_features=1024, bias=True)
+                (key): Linear(in_features=1024, out_features=1024, bias=True)
+                (value): Linear(in_features=1024, out_features=1024, bias=True)
+                (dropout): Dropout(p=0.1, inplace=False)
+              )
+              (output): BertImageSelfOutput(
+                (dense): Linear(in_features=1024, out_features=1024, bias=True)
+                (LayerNorm): LayerNorm((1024,), eps=1e-12, elementwise_affine=True)
+                (dropout): Dropout(p=0.1, inplace=False)
+              )
+            )
+            (intermediate): BertImageIntermediate(
+              (dense): Linear(in_features=1024, out_features=1024, bias=True)
+            )
+            (output): BertImageOutput(
+              (dense): Linear(in_features=1024, out_features=1024, bias=True)
+              (LayerNorm): LayerNorm((1024,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+          (5): BertImageLayer(
+            (attention): BertImageAttention(
+              (self): BertImageSelfAttention(
+                (query): Linear(in_features=1024, out_features=1024, bias=True)
+                (key): Linear(in_features=1024, out_features=1024, bias=True)
+                (value): Linear(in_features=1024, out_features=1024, bias=True)
+                (dropout): Dropout(p=0.1, inplace=False)
+              )
+              (output): BertImageSelfOutput(
+                (dense): Linear(in_features=1024, out_features=1024, bias=True)
+                (LayerNorm): LayerNorm((1024,), eps=1e-12, elementwise_affine=True)
+                (dropout): Dropout(p=0.1, inplace=False)
+              )
+            )
+            (intermediate): BertImageIntermediate(
+              (dense): Linear(in_features=1024, out_features=1024, bias=True)
+            )
+            (output): BertImageOutput(
+              (dense): Linear(in_features=1024, out_features=1024, bias=True)
+              (LayerNorm): LayerNorm((1024,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+        )
+        (c_layer): ModuleList(
+          (0): BertConnectionLayer(
+            (biattention): BertBiAttention(
+              (query1): Linear(in_features=1024, out_features=1024, bias=True)
+              (key1): Linear(in_features=1024, out_features=1024, bias=True)
+              (value1): Linear(in_features=1024, out_features=1024, bias=True)
+              (dropout1): Dropout(p=0.1, inplace=False)
+              (query2): Linear(in_features=768, out_features=1024, bias=True)
+              (key2): Linear(in_features=768, out_features=1024, bias=True)
+              (value2): Linear(in_features=768, out_features=1024, bias=True)
+              (dropout2): Dropout(p=0.1, inplace=False)
+            )
+            (biOutput): BertBiOutput(
+              (dense1): Linear(in_features=1024, out_features=1024, bias=True)
+              (LayerNorm1): LayerNorm((1024,), eps=1e-12, elementwise_affine=True)
+              (dropout1): Dropout(p=0.1, inplace=False)
+              (q_dense1): Linear(in_features=1024, out_features=1024, bias=True)
+              (q_dropout1): Dropout(p=0.1, inplace=False)
+              (dense2): Linear(in_features=1024, out_features=768, bias=True)
+              (LayerNorm2): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+              (dropout2): Dropout(p=0.1, inplace=False)
+              (q_dense2): Linear(in_features=1024, out_features=768, bias=True)
+              (q_dropout2): Dropout(p=0.1, inplace=False)
+            )
+            (v_intermediate): BertImageIntermediate(
+              (dense): Linear(in_features=1024, out_features=1024, bias=True)
+            )
+            (v_output): BertImageOutput(
+              (dense): Linear(in_features=1024, out_features=1024, bias=True)
+              (LayerNorm): LayerNorm((1024,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (t_intermediate): BertIntermediate(
+              (dense): Linear(in_features=768, out_features=3072, bias=True)
+            )
+            (t_output): BertOutput(
+              (dense): Linear(in_features=3072, out_features=768, bias=True)
+              (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+          (1): BertConnectionLayer(
+            (biattention): BertBiAttention(
+              (query1): Linear(in_features=1024, out_features=1024, bias=True)
+              (key1): Linear(in_features=1024, out_features=1024, bias=True)
+              (value1): Linear(in_features=1024, out_features=1024, bias=True)
+              (dropout1): Dropout(p=0.1, inplace=False)
+              (query2): Linear(in_features=768, out_features=1024, bias=True)
+              (key2): Linear(in_features=768, out_features=1024, bias=True)
+              (value2): Linear(in_features=768, out_features=1024, bias=True)
+              (dropout2): Dropout(p=0.1, inplace=False)
+            )
+            (biOutput): BertBiOutput(
+              (dense1): Linear(in_features=1024, out_features=1024, bias=True)
+              (LayerNorm1): LayerNorm((1024,), eps=1e-12, elementwise_affine=True)
+              (dropout1): Dropout(p=0.1, inplace=False)
+              (q_dense1): Linear(in_features=1024, out_features=1024, bias=True)
+              (q_dropout1): Dropout(p=0.1, inplace=False)
+              (dense2): Linear(in_features=1024, out_features=768, bias=True)
+              (LayerNorm2): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+              (dropout2): Dropout(p=0.1, inplace=False)
+              (q_dense2): Linear(in_features=1024, out_features=768, bias=True)
+              (q_dropout2): Dropout(p=0.1, inplace=False)
+            )
+            (v_intermediate): BertImageIntermediate(
+              (dense): Linear(in_features=1024, out_features=1024, bias=True)
+            )
+            (v_output): BertImageOutput(
+              (dense): Linear(in_features=1024, out_features=1024, bias=True)
+              (LayerNorm): LayerNorm((1024,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (t_intermediate): BertIntermediate(
+              (dense): Linear(in_features=768, out_features=3072, bias=True)
+            )
+            (t_output): BertOutput(
+              (dense): Linear(in_features=3072, out_features=768, bias=True)
+              (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+          (2): BertConnectionLayer(
+            (biattention): BertBiAttention(
+              (query1): Linear(in_features=1024, out_features=1024, bias=True)
+              (key1): Linear(in_features=1024, out_features=1024, bias=True)
+              (value1): Linear(in_features=1024, out_features=1024, bias=True)
+              (dropout1): Dropout(p=0.1, inplace=False)
+              (query2): Linear(in_features=768, out_features=1024, bias=True)
+              (key2): Linear(in_features=768, out_features=1024, bias=True)
+              (value2): Linear(in_features=768, out_features=1024, bias=True)
+              (dropout2): Dropout(p=0.1, inplace=False)
+            )
+            (biOutput): BertBiOutput(
+              (dense1): Linear(in_features=1024, out_features=1024, bias=True)
+              (LayerNorm1): LayerNorm((1024,), eps=1e-12, elementwise_affine=True)
+              (dropout1): Dropout(p=0.1, inplace=False)
+              (q_dense1): Linear(in_features=1024, out_features=1024, bias=True)
+              (q_dropout1): Dropout(p=0.1, inplace=False)
+              (dense2): Linear(in_features=1024, out_features=768, bias=True)
+              (LayerNorm2): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+              (dropout2): Dropout(p=0.1, inplace=False)
+              (q_dense2): Linear(in_features=1024, out_features=768, bias=True)
+              (q_dropout2): Dropout(p=0.1, inplace=False)
+            )
+            (v_intermediate): BertImageIntermediate(
+              (dense): Linear(in_features=1024, out_features=1024, bias=True)
+            )
+            (v_output): BertImageOutput(
+              (dense): Linear(in_features=1024, out_features=1024, bias=True)
+              (LayerNorm): LayerNorm((1024,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (t_intermediate): BertIntermediate(
+              (dense): Linear(in_features=768, out_features=3072, bias=True)
+            )
+            (t_output): BertOutput(
+              (dense): Linear(in_features=3072, out_features=768, bias=True)
+              (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+          (3): BertConnectionLayer(
+            (biattention): BertBiAttention(
+              (query1): Linear(in_features=1024, out_features=1024, bias=True)
+              (key1): Linear(in_features=1024, out_features=1024, bias=True)
+              (value1): Linear(in_features=1024, out_features=1024, bias=True)
+              (dropout1): Dropout(p=0.1, inplace=False)
+              (query2): Linear(in_features=768, out_features=1024, bias=True)
+              (key2): Linear(in_features=768, out_features=1024, bias=True)
+              (value2): Linear(in_features=768, out_features=1024, bias=True)
+              (dropout2): Dropout(p=0.1, inplace=False)
+            )
+            (biOutput): BertBiOutput(
+              (dense1): Linear(in_features=1024, out_features=1024, bias=True)
+              (LayerNorm1): LayerNorm((1024,), eps=1e-12, elementwise_affine=True)
+              (dropout1): Dropout(p=0.1, inplace=False)
+              (q_dense1): Linear(in_features=1024, out_features=1024, bias=True)
+              (q_dropout1): Dropout(p=0.1, inplace=False)
+              (dense2): Linear(in_features=1024, out_features=768, bias=True)
+              (LayerNorm2): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+              (dropout2): Dropout(p=0.1, inplace=False)
+              (q_dense2): Linear(in_features=1024, out_features=768, bias=True)
+              (q_dropout2): Dropout(p=0.1, inplace=False)
+            )
+            (v_intermediate): BertImageIntermediate(
+              (dense): Linear(in_features=1024, out_features=1024, bias=True)
+            )
+            (v_output): BertImageOutput(
+              (dense): Linear(in_features=1024, out_features=1024, bias=True)
+              (LayerNorm): LayerNorm((1024,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (t_intermediate): BertIntermediate(
+              (dense): Linear(in_features=768, out_features=3072, bias=True)
+            )
+            (t_output): BertOutput(
+              (dense): Linear(in_features=3072, out_features=768, bias=True)
+              (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+          (4): BertConnectionLayer(
+            (biattention): BertBiAttention(
+              (query1): Linear(in_features=1024, out_features=1024, bias=True)
+              (key1): Linear(in_features=1024, out_features=1024, bias=True)
+              (value1): Linear(in_features=1024, out_features=1024, bias=True)
+              (dropout1): Dropout(p=0.1, inplace=False)
+              (query2): Linear(in_features=768, out_features=1024, bias=True)
+              (key2): Linear(in_features=768, out_features=1024, bias=True)
+              (value2): Linear(in_features=768, out_features=1024, bias=True)
+              (dropout2): Dropout(p=0.1, inplace=False)
+            )
+            (biOutput): BertBiOutput(
+              (dense1): Linear(in_features=1024, out_features=1024, bias=True)
+              (LayerNorm1): LayerNorm((1024,), eps=1e-12, elementwise_affine=True)
+              (dropout1): Dropout(p=0.1, inplace=False)
+              (q_dense1): Linear(in_features=1024, out_features=1024, bias=True)
+              (q_dropout1): Dropout(p=0.1, inplace=False)
+              (dense2): Linear(in_features=1024, out_features=768, bias=True)
+              (LayerNorm2): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+              (dropout2): Dropout(p=0.1, inplace=False)
+              (q_dense2): Linear(in_features=1024, out_features=768, bias=True)
+              (q_dropout2): Dropout(p=0.1, inplace=False)
+            )
+            (v_intermediate): BertImageIntermediate(
+              (dense): Linear(in_features=1024, out_features=1024, bias=True)
+            )
+            (v_output): BertImageOutput(
+              (dense): Linear(in_features=1024, out_features=1024, bias=True)
+              (LayerNorm): LayerNorm((1024,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (t_intermediate): BertIntermediate(
+              (dense): Linear(in_features=768, out_features=3072, bias=True)
+            )
+            (t_output): BertOutput(
+              (dense): Linear(in_features=3072, out_features=768, bias=True)
+              (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+          (5): BertConnectionLayer(
+            (biattention): BertBiAttention(
+              (query1): Linear(in_features=1024, out_features=1024, bias=True)
+              (key1): Linear(in_features=1024, out_features=1024, bias=True)
+              (value1): Linear(in_features=1024, out_features=1024, bias=True)
+              (dropout1): Dropout(p=0.1, inplace=False)
+              (query2): Linear(in_features=768, out_features=1024, bias=True)
+              (key2): Linear(in_features=768, out_features=1024, bias=True)
+              (value2): Linear(in_features=768, out_features=1024, bias=True)
+              (dropout2): Dropout(p=0.1, inplace=False)
+            )
+            (biOutput): BertBiOutput(
+              (dense1): Linear(in_features=1024, out_features=1024, bias=True)
+              (LayerNorm1): LayerNorm((1024,), eps=1e-12, elementwise_affine=True)
+              (dropout1): Dropout(p=0.1, inplace=False)
+              (q_dense1): Linear(in_features=1024, out_features=1024, bias=True)
+              (q_dropout1): Dropout(p=0.1, inplace=False)
+              (dense2): Linear(in_features=1024, out_features=768, bias=True)
+              (LayerNorm2): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+              (dropout2): Dropout(p=0.1, inplace=False)
+              (q_dense2): Linear(in_features=1024, out_features=768, bias=True)
+              (q_dropout2): Dropout(p=0.1, inplace=False)
+            )
+            (v_intermediate): BertImageIntermediate(
+              (dense): Linear(in_features=1024, out_features=1024, bias=True)
+            )
+            (v_output): BertImageOutput(
+              (dense): Linear(in_features=1024, out_features=1024, bias=True)
+              (LayerNorm): LayerNorm((1024,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (t_intermediate): BertIntermediate(
+              (dense): Linear(in_features=768, out_features=3072, bias=True)
+            )
+            (t_output): BertOutput(
+              (dense): Linear(in_features=3072, out_features=768, bias=True)
+              (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+        )
+      )
+      (t_pooler): BertTextPooler(
+        (dense): Linear(in_features=768, out_features=1024, bias=True)
+        (activation): ReLU()
+      )
+      (v_pooler): BertImagePooler(
+        (dense): Linear(in_features=1024, out_features=1024, bias=True)
+        (activation): ReLU()
+      )
+    )
+    (dropout): Dropout(p=0.1, inplace=False)
+    (classifier): Sequential(
+      (0): BertPredictionHeadTransform(
+        (dense): Linear(in_features=1024, out_features=1024, bias=True)
+        (LayerNorm): LayerNorm((1024,), eps=1e-12, elementwise_affine=True)
+      )
+      (1): Linear(in_features=1024, out_features=2, bias=True)
+    )
+  )
+  (losses): Losses(
+    (losses): ModuleList(
+      (0): MMFLoss(
+        (loss_criterion): CrossEntropyLoss(
+          (loss_fn): CrossEntropyLoss()
+        )
+      )
+    )
+  )
+)
+2022-04-25T21:21:07 | INFO | mmf.utils.general : Total Parameters: 247780354. Trained Parameters: 247780354
+2022-04-25T21:21:07 | INFO | mmf.trainers.core.training_loop : Starting training...
+2022-04-25T21:22:46 | INFO | mmf.trainers.callbacks.logistics : progress: 100/22000, train/hateful_memes/cross_entropy: 0.6888, train/hateful_memes/cross_entropy/avg: 0.6888, train/total_loss: 0.6888, train/total_loss/avg: 0.6888, max mem: 10794.0, experiment: run, epoch: 1, num_updates: 100, iterations: 100, max_updates: 22000, lr: 0., ups: 1.02, time: 01m 38s 654ms, time_since_start: 01m 38s 708ms, eta: 06h 06m 12s 666ms
+2022-04-25T21:24:22 | INFO | mmf.trainers.callbacks.logistics : progress: 200/22000, train/hateful_memes/cross_entropy: 0.6883, train/hateful_memes/cross_entropy/avg: 0.6885, train/total_loss: 0.6883, train/total_loss/avg: 0.6885, max mem: 10794.0, experiment: run, epoch: 1, num_updates: 200, iterations: 200, max_updates: 22000, lr: 0., ups: 1.04, time: 01m 36s 692ms, time_since_start: 03m 15s 400ms, eta: 05h 57m 17s 338ms
+2022-04-25T21:25:58 | INFO | mmf.trainers.callbacks.logistics : progress: 300/22000, train/hateful_memes/cross_entropy: 0.6883, train/hateful_memes/cross_entropy/avg: 0.6621, train/total_loss: 0.6883, train/total_loss/avg: 0.6621, max mem: 10794.0, experiment: run, epoch: 2, num_updates: 300, iterations: 300, max_updates: 22000, lr: 0., ups: 1.05, time: 01m 35s 845ms, time_since_start: 04m 51s 246ms, eta: 05h 52m 32s 019ms
+2022-04-25T21:27:34 | INFO | mmf.trainers.callbacks.logistics : progress: 400/22000, train/hateful_memes/cross_entropy: 0.6610, train/hateful_memes/cross_entropy/avg: 0.6618, train/total_loss: 0.6610, train/total_loss/avg: 0.6618, max mem: 10794.0, experiment: run, epoch: 2, num_updates: 400, iterations: 400, max_updates: 22000, lr: 0., ups: 1.05, time: 01m 35s 770ms, time_since_start: 06m 27s 016ms, eta: 05h 50m 38s 096ms
+2022-04-25T21:29:10 | INFO | mmf.trainers.callbacks.logistics : progress: 500/22000, train/hateful_memes/cross_entropy: 0.6610, train/hateful_memes/cross_entropy/avg: 0.6481, train/total_loss: 0.6610, train/total_loss/avg: 0.6481, max mem: 10794.0, experiment: run, epoch: 2, num_updates: 500, iterations: 500, max_updates: 22000, lr: 0., ups: 1.05, time: 01m 35s 816ms, time_since_start: 08m 02s 833ms, eta: 05h 49m 10s 827ms
+2022-04-25T21:30:45 | INFO | mmf.trainers.callbacks.logistics : progress: 600/22000, train/hateful_memes/cross_entropy: 0.6295, train/hateful_memes/cross_entropy/avg: 0.6450, train/total_loss: 0.6295, train/total_loss/avg: 0.6450, max mem: 10794.0, experiment: run, epoch: 3, num_updates: 600, iterations: 600, max_updates: 22000, lr: 0., ups: 1.05, time: 01m 35s 361ms, time_since_start: 09m 38s 194ms, eta: 05h 45m 54s 260ms
+2022-04-25T21:32:21 | INFO | mmf.trainers.callbacks.logistics : progress: 700/22000, train/hateful_memes/cross_entropy: 0.6295, train/hateful_memes/cross_entropy/avg: 0.6341, train/total_loss: 0.6295, train/total_loss/avg: 0.6341, max mem: 10794.0, experiment: run, epoch: 3, num_updates: 700, iterations: 700, max_updates: 22000, lr: 0., ups: 1.05, time: 01m 35s 870ms, time_since_start: 11m 14s 065ms, eta: 05h 46m 07s 513ms
+2022-04-25T21:33:57 | INFO | mmf.trainers.callbacks.logistics : progress: 800/22000, train/hateful_memes/cross_entropy: 0.6187, train/hateful_memes/cross_entropy/avg: 0.6322, train/total_loss: 0.6187, train/total_loss/avg: 0.6322, max mem: 10794.0, experiment: run, epoch: 4, num_updates: 800, iterations: 800, max_updates: 22000, lr: 0., ups: 1.05, time: 01m 35s 828ms, time_since_start: 12m 49s 893ms, eta: 05h 44m 21s 056ms
+2022-04-25T21:35:33 | INFO | mmf.trainers.callbacks.logistics : progress: 900/22000, train/hateful_memes/cross_entropy: 0.6295, train/hateful_memes/cross_entropy/avg: 0.6416, train/total_loss: 0.6295, train/total_loss/avg: 0.6416, max mem: 10794.0, experiment: run, epoch: 4, num_updates: 900, iterations: 900, max_updates: 22000, lr: 0., ups: 1.05, time: 01m 35s 907ms, time_since_start: 14m 25s 801ms, eta: 05h 43m 465ms
+2022-04-25T21:37:08 | INFO | mmf.trainers.callbacks.checkpoint : Checkpoint time. Saving a checkpoint.
+2022-04-25T21:37:08 | INFO | mmf.utils.checkpoint : Checkpoint save operation started!
+2022-04-25T21:37:19 | INFO | mmf.utils.checkpoint : Saving current checkpoint
+2022-04-25T21:37:32 | INFO | mmf.utils.checkpoint : Checkpoint save operation finished!
+2022-04-25T21:37:32 | INFO | mmf.trainers.callbacks.logistics : progress: 1000/22000, train/hateful_memes/cross_entropy: 0.6187, train/hateful_memes/cross_entropy/avg: 0.6301, train/total_loss: 0.6187, train/total_loss/avg: 0.6301, max mem: 10794.0, experiment: run, epoch: 4, num_updates: 1000, iterations: 1000, max_updates: 22000, lr: 0.00001, ups: 0.84, time: 01m 59s 089ms, time_since_start: 16m 24s 890ms, eta: 07h 03m 53s 875ms
+2022-04-25T21:37:32 | INFO | mmf.trainers.core.training_loop : Evaluation time. Running on full validation set...
+2022-04-25T21:37:32 | INFO | mmf.common.test_reporter : Predicting for hateful_memes
+2022-04-25T21:37:38 | INFO | mmf.trainers.core.evaluation_loop : Finished training. Loaded 17
+2022-04-25T21:37:38 | INFO | mmf.trainers.core.evaluation_loop :  -- skipped 0 batches.
+2022-04-25T21:37:39 | INFO | mmf.utils.checkpoint : Checkpoint save operation started!
+2022-04-25T21:37:52 | INFO | mmf.utils.checkpoint : Saving best checkpoint
+2022-04-25T21:38:06 | INFO | mmf.utils.checkpoint : Saving current checkpoint
+2022-04-25T21:38:18 | INFO | mmf.utils.checkpoint : Checkpoint save operation finished!
+2022-04-25T21:38:18 | INFO | mmf.trainers.callbacks.logistics : progress: 1000/22000, val/hateful_memes/cross_entropy: 0.7933, val/total_loss: 0.7933, val/hateful_memes/accuracy: 0.6204, val/hateful_memes/binary_f1: 0.2264, val/hateful_memes/roc_auc: 0.6025, num_updates: 1000, epoch: 4, iterations: 1000, max_updates: 22000, val_time: 46s 487ms, best_update: 1000, best_iteration: 1000, best_val/hateful_memes/roc_auc: 0.602529
+2022-04-25T21:39:57 | INFO | mmf.trainers.callbacks.logistics : progress: 1100/22000, train/hateful_memes/cross_entropy: 0.6187, train/hateful_memes/cross_entropy/avg: 0.6227, train/total_loss: 0.6187, train/total_loss/avg: 0.6227, max mem: 10794.0, experiment: run, epoch: 5, num_updates: 1100, iterations: 1100, max_updates: 22000, lr: 0.00001, ups: 1.02, time: 01m 38s 310ms, time_since_start: 18m 49s 689ms, eta: 05h 48m 16s 105ms
+2022-04-25T21:41:33 | INFO | mmf.trainers.callbacks.logistics : progress: 1200/22000, train/hateful_memes/cross_entropy: 0.6093, train/hateful_memes/cross_entropy/avg: 0.6149, train/total_loss: 0.6093, train/total_loss/avg: 0.6149, max mem: 10794.0, experiment: run, epoch: 5, num_updates: 1200, iterations: 1200, max_updates: 22000, lr: 0.00001, ups: 1.04, time: 01m 36s 427ms, time_since_start: 20m 26s 116ms, eta: 05h 39m 57s 829ms
+2022-04-25T21:43:10 | INFO | mmf.trainers.callbacks.logistics : progress: 1300/22000, train/hateful_memes/cross_entropy: 0.6093, train/hateful_memes/cross_entropy/avg: 0.5863, train/total_loss: 0.6093, train/total_loss/avg: 0.5863, max mem: 10794.0, experiment: run, epoch: 5, num_updates: 1300, iterations: 1300, max_updates: 22000, lr: 0.00001, ups: 1.04, time: 01m 36s 494ms, time_since_start: 22m 02s 611ms, eta: 05h 38m 34s 009ms
+2022-04-25T21:44:46 | INFO | mmf.trainers.callbacks.logistics : progress: 1400/22000, train/hateful_memes/cross_entropy: 0.5933, train/hateful_memes/cross_entropy/avg: 0.5640, train/total_loss: 0.5933, train/total_loss/avg: 0.5640, max mem: 10794.0, experiment: run, epoch: 6, num_updates: 1400, iterations: 1400, max_updates: 22000, lr: 0.00001, ups: 1.04, time: 01m 36s 214ms, time_since_start: 23m 38s 826ms, eta: 05h 35m 57s 094ms
+2022-04-25T21:46:22 | INFO | mmf.trainers.callbacks.logistics : progress: 1500/22000, train/hateful_memes/cross_entropy: 0.5933, train/hateful_memes/cross_entropy/avg: 0.5607, train/total_loss: 0.5933, train/total_loss/avg: 0.5607, max mem: 10794.0, experiment: run, epoch: 6, num_updates: 1500, iterations: 1500, max_updates: 22000, lr: 0.00001, ups: 1.04, time: 01m 36s 286ms, time_since_start: 25m 15s 112ms, eta: 05h 34m 34s 279ms
+2022-04-25T21:47:58 | INFO | mmf.trainers.callbacks.logistics : progress: 1600/22000, train/hateful_memes/cross_entropy: 0.5687, train/hateful_memes/cross_entropy/avg: 0.5506, train/total_loss: 0.5687, train/total_loss/avg: 0.5506, max mem: 10794.0, experiment: run, epoch: 7, num_updates: 1600, iterations: 1600, max_updates: 22000, lr: 0.00001, ups: 1.05, time: 01m 35s 752ms, time_since_start: 26m 50s 865ms, eta: 05h 31m 05s 666ms
+2022-04-25T21:49:34 | INFO | mmf.trainers.callbacks.logistics : progress: 1700/22000, train/hateful_memes/cross_entropy: 0.5687, train/hateful_memes/cross_entropy/avg: 0.5289, train/total_loss: 0.5687, train/total_loss/avg: 0.5289, max mem: 10794.0, experiment: run, epoch: 7, num_updates: 1700, iterations: 1700, max_updates: 22000, lr: 0.00001, ups: 1.04, time: 01m 36s 028ms, time_since_start: 28m 26s 893ms, eta: 05h 30m 25s 128ms
+2022-04-25T21:51:10 | INFO | mmf.trainers.callbacks.logistics : progress: 1800/22000, train/hateful_memes/cross_entropy: 0.5479, train/hateful_memes/cross_entropy/avg: 0.5170, train/total_loss: 0.5479, train/total_loss/avg: 0.5170, max mem: 10794.0, experiment: run, epoch: 7, num_updates: 1800, iterations: 1800, max_updates: 22000, lr: 0.00001, ups: 1.05, time: 01m 35s 988ms, time_since_start: 30m 02s 881ms, eta: 05h 28m 39s 221ms
+2022-04-25T21:52:46 | INFO | mmf.trainers.callbacks.logistics : progress: 1900/22000, train/hateful_memes/cross_entropy: 0.5479, train/hateful_memes/cross_entropy/avg: 0.5020, train/total_loss: 0.5479, train/total_loss/avg: 0.5020, max mem: 10794.0, experiment: run, epoch: 8, num_updates: 1900, iterations: 1900, max_updates: 22000, lr: 0.00001, ups: 1.05, time: 01m 35s 896ms, time_since_start: 31m 38s 778ms, eta: 05h 26m 42s 833ms
+2022-04-25T21:54:22 | INFO | mmf.trainers.callbacks.checkpoint : Checkpoint time. Saving a checkpoint.
+2022-04-25T21:54:22 | INFO | mmf.utils.checkpoint : Checkpoint save operation started!
+2022-04-25T21:54:35 | INFO | mmf.utils.checkpoint : Saving current checkpoint
+2022-04-25T21:54:48 | INFO | mmf.utils.checkpoint : Checkpoint save operation finished!
+2022-04-25T21:54:48 | INFO | mmf.trainers.callbacks.logistics : progress: 2000/22000, train/hateful_memes/cross_entropy: 0.5300, train/hateful_memes/cross_entropy/avg: 0.4929, train/total_loss: 0.5300, train/total_loss/avg: 0.4929, max mem: 10794.0, experiment: run, epoch: 8, num_updates: 2000, iterations: 2000, max_updates: 22000, lr: 0.00001, ups: 0.82, time: 02m 02s 138ms, time_since_start: 33m 40s 916ms, eta: 06h 54m 02s 986ms
+2022-04-25T21:54:48 | INFO | mmf.trainers.core.training_loop : Evaluation time. Running on full validation set...
+2022-04-25T21:54:48 | INFO | mmf.common.test_reporter : Predicting for hateful_memes
+2022-04-25T21:54:55 | INFO | mmf.trainers.core.evaluation_loop : Finished training. Loaded 17
+2022-04-25T21:54:55 | INFO | mmf.trainers.core.evaluation_loop :  -- skipped 0 batches.
+2022-04-25T21:54:55 | INFO | mmf.utils.checkpoint : Checkpoint save operation started!
+2022-04-25T21:55:08 | INFO | mmf.utils.checkpoint : Saving best checkpoint
+2022-04-25T21:55:21 | INFO | mmf.utils.checkpoint : Saving current checkpoint
+2022-04-25T21:55:33 | INFO | mmf.utils.checkpoint : Checkpoint save operation finished!
+2022-04-25T21:55:33 | INFO | mmf.trainers.callbacks.logistics : progress: 2000/22000, val/hateful_memes/cross_entropy: 0.8362, val/total_loss: 0.8362, val/hateful_memes/accuracy: 0.6556, val/hateful_memes/binary_f1: 0.4497, val/hateful_memes/roc_auc: 0.6600, num_updates: 2000, epoch: 8, iterations: 2000, max_updates: 22000, val_time: 45s 323ms, best_update: 2000, best_iteration: 2000, best_val/hateful_memes/roc_auc: 0.659985
+2022-04-25T21:57:12 | INFO | mmf.trainers.callbacks.logistics : progress: 2100/22000, train/hateful_memes/cross_entropy: 0.5266, train/hateful_memes/cross_entropy/avg: 0.4835, train/total_loss: 0.5266, train/total_loss/avg: 0.4835, max mem: 10794.0, experiment: run, epoch: 8, num_updates: 2100, iterations: 2100, max_updates: 22000, lr: 0.00001, ups: 1.02, time: 01m 38s 416ms, time_since_start: 36m 04s 658ms, eta: 05h 31m 57s 824ms
+2022-04-25T21:58:49 | INFO | mmf.trainers.callbacks.logistics : progress: 2200/22000, train/hateful_memes/cross_entropy: 0.5137, train/hateful_memes/cross_entropy/avg: 0.4676, train/total_loss: 0.5137, train/total_loss/avg: 0.4676, max mem: 10794.0, experiment: run, epoch: 9, num_updates: 2200, iterations: 2200, max_updates: 22000, lr: 0.00001, ups: 1.03, time: 01m 37s 107ms, time_since_start: 37m 41s 765ms, eta: 05h 25m 54s 139ms
+2022-04-25T22:00:26 | INFO | mmf.trainers.callbacks.logistics : progress: 2300/22000, train/hateful_memes/cross_entropy: 0.3988, train/hateful_memes/cross_entropy/avg: 0.4541, train/total_loss: 0.3988, train/total_loss/avg: 0.4541, max mem: 10794.0, experiment: run, epoch: 9, num_updates: 2300, iterations: 2300, max_updates: 22000, lr: 0.00001, ups: 1.04, time: 01m 36s 725ms, time_since_start: 39m 18s 490ms, eta: 05h 22m 58s 770ms
+2022-04-25T22:02:02 | INFO | mmf.trainers.callbacks.logistics : progress: 2400/22000, train/hateful_memes/cross_entropy: 0.3187, train/hateful_memes/cross_entropy/avg: 0.4448, train/total_loss: 0.3187, train/total_loss/avg: 0.4448, max mem: 10794.0, experiment: run, epoch: 10, num_updates: 2400, iterations: 2400, max_updates: 22000, lr: 0.00001, ups: 1.04, time: 01m 36s 375ms, time_since_start: 40m 54s 865ms, eta: 05h 20m 10s 652ms
+2022-04-25T22:03:38 | INFO | mmf.trainers.callbacks.logistics : progress: 2500/22000, train/hateful_memes/cross_entropy: 0.3150, train/hateful_memes/cross_entropy/avg: 0.4290, train/total_loss: 0.3150, train/total_loss/avg: 0.4290, max mem: 10794.0, experiment: run, epoch: 10, num_updates: 2500, iterations: 2500, max_updates: 22000, lr: 0.00001, ups: 1.04, time: 01m 36s 127ms, time_since_start: 42m 30s 993ms, eta: 05h 17m 43s 574ms
+2022-04-25T22:05:14 | INFO | mmf.trainers.callbacks.logistics : progress: 2600/22000, train/hateful_memes/cross_entropy: 0.2962, train/hateful_memes/cross_entropy/avg: 0.4201, train/total_loss: 0.2962, train/total_loss/avg: 0.4201, max mem: 10794.0, experiment: run, epoch: 10, num_updates: 2600, iterations: 2600, max_updates: 22000, lr: 0.00001, ups: 1.04, time: 01m 36s 157ms, time_since_start: 44m 07s 150ms, eta: 05h 16m 11s 617ms
+2022-04-25T22:06:50 | INFO | mmf.trainers.callbacks.logistics : progress: 2700/22000, train/hateful_memes/cross_entropy: 0.2749, train/hateful_memes/cross_entropy/avg: 0.4074, train/total_loss: 0.2749, train/total_loss/avg: 0.4074, max mem: 10794.0, experiment: run, epoch: 11, num_updates: 2700, iterations: 2700, max_updates: 22000, lr: 0.00001, ups: 1.05, time: 01m 35s 613ms, time_since_start: 45m 42s 764ms, eta: 05h 12m 47s 199ms
+2022-04-25T22:08:26 | INFO | mmf.trainers.callbacks.logistics : progress: 2800/22000, train/hateful_memes/cross_entropy: 0.2421, train/hateful_memes/cross_entropy/avg: 0.3949, train/total_loss: 0.2421, train/total_loss/avg: 0.3949, max mem: 10794.0, experiment: run, epoch: 11, num_updates: 2800, iterations: 2800, max_updates: 22000, lr: 0.00001, ups: 1.04, time: 01m 36s 257ms, time_since_start: 47m 19s 021ms, eta: 05h 13m 15s 551ms
+2022-04-25T22:10:02 | INFO | mmf.trainers.callbacks.logistics : progress: 2900/22000, train/hateful_memes/cross_entropy: 0.2327, train/hateful_memes/cross_entropy/avg: 0.3845, train/total_loss: 0.2327, train/total_loss/avg: 0.3845, max mem: 10794.0, experiment: run, epoch: 11, num_updates: 2900, iterations: 2900, max_updates: 22000, lr: 0.00001, ups: 1.04, time: 01m 36s 323ms, time_since_start: 48m 55s 345ms, eta: 05h 11m 50s 609ms
+2022-04-25T22:11:38 | INFO | mmf.trainers.callbacks.checkpoint : Checkpoint time. Saving a checkpoint.
+2022-04-25T22:11:38 | INFO | mmf.utils.checkpoint : Checkpoint save operation started!
+2022-04-25T22:11:51 | INFO | mmf.utils.checkpoint : Saving current checkpoint
+2022-04-25T22:12:03 | INFO | mmf.utils.checkpoint : Checkpoint save operation finished!
+2022-04-25T22:12:03 | INFO | mmf.trainers.callbacks.logistics : progress: 3000/22000, train/hateful_memes/cross_entropy: 0.2306, train/hateful_memes/cross_entropy/avg: 0.3732, train/total_loss: 0.2306, train/total_loss/avg: 0.3732, max mem: 10794.0, experiment: run, epoch: 12, num_updates: 3000, iterations: 3000, max_updates: 22000, lr: 0.00001, ups: 0.83, time: 02m 922ms, time_since_start: 50m 56s 268ms, eta: 06h 29m 25s 846ms
+2022-04-25T22:12:03 | INFO | mmf.trainers.core.training_loop : Evaluation time. Running on full validation set...
+2022-04-25T22:12:05 | INFO | mmf.common.test_reporter : Predicting for hateful_memes
+2022-04-25T22:12:11 | INFO | mmf.trainers.core.evaluation_loop : Finished training. Loaded 17
+2022-04-25T22:12:11 | INFO | mmf.trainers.core.evaluation_loop :  -- skipped 0 batches.
+2022-04-25T22:12:12 | INFO | mmf.utils.checkpoint : Checkpoint save operation started!
+2022-04-25T22:12:24 | INFO | mmf.utils.checkpoint : Saving best checkpoint
+2022-04-25T22:12:38 | INFO | mmf.utils.checkpoint : Saving current checkpoint
+2022-04-25T22:12:51 | INFO | mmf.utils.checkpoint : Checkpoint save operation finished!
+2022-04-25T22:12:51 | INFO | mmf.trainers.callbacks.logistics : progress: 3000/22000, val/hateful_memes/cross_entropy: 1.2963, val/total_loss: 1.2963, val/hateful_memes/accuracy: 0.6741, val/hateful_memes/binary_f1: 0.4395, val/hateful_memes/roc_auc: 0.6982, num_updates: 3000, epoch: 12, iterations: 3000, max_updates: 22000, val_time: 47s 724ms, best_update: 3000, best_iteration: 3000, best_val/hateful_memes/roc_auc: 0.698235
+2022-04-25T22:14:29 | INFO | mmf.trainers.callbacks.logistics : progress: 3100/22000, train/hateful_memes/cross_entropy: 0.1974, train/hateful_memes/cross_entropy/avg: 0.3617, train/total_loss: 0.1974, train/total_loss/avg: 0.3617, max mem: 10794.0, experiment: run, epoch: 12, num_updates: 3100, iterations: 3100, max_updates: 22000, lr: 0.00001, ups: 1.03, time: 01m 37s 775ms, time_since_start: 53m 21s 770ms, eta: 05h 13m 13s 750ms
+2022-04-25T22:16:06 | INFO | mmf.trainers.callbacks.logistics : progress: 3200/22000, train/hateful_memes/cross_entropy: 0.1818, train/hateful_memes/cross_entropy/avg: 0.3509, train/total_loss: 0.1818, train/total_loss/avg: 0.3509, max mem: 10794.0, experiment: run, epoch: 13, num_updates: 3200, iterations: 3200, max_updates: 22000, lr: 0.00001, ups: 1.03, time: 01m 37s 022ms, time_since_start: 54m 58s 792ms, eta: 05h 09m 10s 353ms
+2022-04-25T22:17:42 | INFO | mmf.trainers.callbacks.logistics : progress: 3300/22000, train/hateful_memes/cross_entropy: 0.1576, train/hateful_memes/cross_entropy/avg: 0.3427, train/total_loss: 0.1576, train/total_loss/avg: 0.3427, max mem: 10794.0, experiment: run, epoch: 13, num_updates: 3300, iterations: 3300, max_updates: 22000, lr: 0.00001, ups: 1.04, time: 01m 36s 605ms, time_since_start: 56m 35s 398ms, eta: 05h 06m 12s 270ms
+2022-04-25T22:19:19 | INFO | mmf.trainers.callbacks.logistics : progress: 3400/22000, train/hateful_memes/cross_entropy: 0.1344, train/hateful_memes/cross_entropy/avg: 0.3348, train/total_loss: 0.1344, train/total_loss/avg: 0.3348, max mem: 10794.0, experiment: run, epoch: 13, num_updates: 3400, iterations: 3400, max_updates: 22000, lr: 0.00001, ups: 1.04, time: 01m 36s 617ms, time_since_start: 58m 12s 015ms, eta: 05h 04m 36s 303ms
+2022-04-25T22:20:55 | INFO | mmf.trainers.callbacks.logistics : progress: 3500/22000, train/hateful_memes/cross_entropy: 0.0910, train/hateful_memes/cross_entropy/avg: 0.3269, train/total_loss: 0.0910, train/total_loss/avg: 0.3269, max mem: 10794.0, experiment: run, epoch: 14, num_updates: 3500, iterations: 3500, max_updates: 22000, lr: 0.00001, ups: 1.04, time: 01m 36s 128ms, time_since_start: 59m 48s 143ms, eta: 05h 01m 26s 109ms
+2022-04-25T22:22:31 | INFO | mmf.trainers.callbacks.logistics : progress: 3600/22000, train/hateful_memes/cross_entropy: 0.0798, train/hateful_memes/cross_entropy/avg: 0.3180, train/total_loss: 0.0798, train/total_loss/avg: 0.3180, max mem: 10794.0, experiment: run, epoch: 14, num_updates: 3600, iterations: 3600, max_updates: 22000, lr: 0.00001, ups: 1.04, time: 01m 36s 257ms, time_since_start: 01h 01m 24s 401ms, eta: 05h 12s 502ms
+2022-04-25T22:24:08 | INFO | mmf.trainers.callbacks.logistics : progress: 3700/22000, train/hateful_memes/cross_entropy: 0.0765, train/hateful_memes/cross_entropy/avg: 0.3115, train/total_loss: 0.0765, train/total_loss/avg: 0.3115, max mem: 10794.0, experiment: run, epoch: 14, num_updates: 3700, iterations: 3700, max_updates: 22000, lr: 0.00001, ups: 1.04, time: 01m 36s 340ms, time_since_start: 01h 03m 741ms, eta: 04h 58m 49s 974ms
+2022-04-25T22:25:44 | INFO | mmf.trainers.callbacks.logistics : progress: 3800/22000, train/hateful_memes/cross_entropy: 0.0748, train/hateful_memes/cross_entropy/avg: 0.3044, train/total_loss: 0.0748, train/total_loss/avg: 0.3044, max mem: 10794.0, experiment: run, epoch: 15, num_updates: 3800, iterations: 3800, max_updates: 22000, lr: 0.00001, ups: 1.05, time: 01m 35s 793ms, time_since_start: 01h 04m 36s 535ms, eta: 04h 55m 30s 792ms
+2022-04-25T22:27:20 | INFO | mmf.trainers.callbacks.logistics : progress: 3900/22000, train/hateful_memes/cross_entropy: 0.0734, train/hateful_memes/cross_entropy/avg: 0.2967, train/total_loss: 0.0734, train/total_loss/avg: 0.2967, max mem: 10794.0, experiment: run, epoch: 15, num_updates: 3900, iterations: 3900, max_updates: 22000, lr: 0.00001, ups: 1.04, time: 01m 36s 202ms, time_since_start: 01h 06m 12s 737ms, eta: 04h 55m 08s 648ms
+2022-04-25T22:28:56 | INFO | mmf.trainers.callbacks.checkpoint : Checkpoint time. Saving a checkpoint.
+2022-04-25T22:28:56 | INFO | mmf.utils.checkpoint : Checkpoint save operation started!
+2022-04-25T22:29:09 | INFO | mmf.utils.checkpoint : Saving current checkpoint
+2022-04-25T22:29:22 | INFO | mmf.utils.checkpoint : Checkpoint save operation finished!
+2022-04-25T22:29:22 | INFO | mmf.trainers.callbacks.logistics : progress: 4000/22000, train/hateful_memes/cross_entropy: 0.0585, train/hateful_memes/cross_entropy/avg: 0.2895, train/total_loss: 0.0585, train/total_loss/avg: 0.2895, max mem: 10794.0, experiment: run, epoch: 16, num_updates: 4000, iterations: 4000, max_updates: 22000, lr: 0.00001, ups: 0.82, time: 02m 02s 632ms, time_since_start: 01h 08m 15s 369ms, eta: 06h 14m 09s 034ms
+2022-04-25T22:29:22 | INFO | mmf.trainers.core.training_loop : Evaluation time. Running on full validation set...
+2022-04-25T22:29:22 | INFO | mmf.common.test_reporter : Predicting for hateful_memes
+2022-04-25T22:29:29 | INFO | mmf.trainers.core.evaluation_loop : Finished training. Loaded 17
+2022-04-25T22:29:29 | INFO | mmf.trainers.core.evaluation_loop :  -- skipped 0 batches.
+2022-04-25T22:29:29 | INFO | mmf.utils.checkpoint : Checkpoint save operation started!
+2022-04-25T22:29:42 | INFO | mmf.utils.checkpoint : Saving current checkpoint
+2022-04-25T22:29:54 | INFO | mmf.utils.checkpoint : Checkpoint save operation finished!
+2022-04-25T22:29:54 | INFO | mmf.trainers.callbacks.logistics : progress: 4000/22000, val/hateful_memes/cross_entropy: 1.5682, val/total_loss: 1.5682, val/hateful_memes/accuracy: 0.6889, val/hateful_memes/binary_f1: 0.4815, val/hateful_memes/roc_auc: 0.6929, num_updates: 4000, epoch: 16, iterations: 4000, max_updates: 22000, val_time: 32s 019ms, best_update: 3000, best_iteration: 3000, best_val/hateful_memes/roc_auc: 0.698235
+2022-04-25T22:31:33 | INFO | mmf.trainers.callbacks.logistics : progress: 4100/22000, train/hateful_memes/cross_entropy: 0.0567, train/hateful_memes/cross_entropy/avg: 0.2829, train/total_loss: 0.0567, train/total_loss/avg: 0.2829, max mem: 10794.0, experiment: run, epoch: 16, num_updates: 4100, iterations: 4100, max_updates: 22000, lr: 0.00001, ups: 1.02, time: 01m 38s 180ms, time_since_start: 01h 10m 25s 571ms, eta: 04h 57m 53s 168ms
+2022-04-25T22:33:09 | INFO | mmf.trainers.callbacks.logistics : progress: 4200/22000, train/hateful_memes/cross_entropy: 0.0499, train/hateful_memes/cross_entropy/avg: 0.2768, train/total_loss: 0.0499, train/total_loss/avg: 0.2768, max mem: 10794.0, experiment: run, epoch: 16, num_updates: 4200, iterations: 4200, max_updates: 22000, lr: 0.00001, ups: 1.04, time: 01m 36s 624ms, time_since_start: 01h 12m 02s 195ms, eta: 04h 51m 31s 490ms
+2022-04-25T22:34:45 | INFO | mmf.trainers.callbacks.logistics : progress: 4300/22000, train/hateful_memes/cross_entropy: 0.0476, train/hateful_memes/cross_entropy/avg: 0.2707, train/total_loss: 0.0476, train/total_loss/avg: 0.2707, max mem: 10794.0, experiment: run, epoch: 17, num_updates: 4300, iterations: 4300, max_updates: 22000, lr: 0.00001, ups: 1.05, time: 01m 35s 956ms, time_since_start: 01h 13m 38s 152ms, eta: 04h 47m 53s 105ms
+2022-04-25T22:36:22 | INFO | mmf.trainers.callbacks.logistics : progress: 4400/22000, train/hateful_memes/cross_entropy: 0.0476, train/hateful_memes/cross_entropy/avg: 0.2671, train/total_loss: 0.0476, train/total_loss/avg: 0.2671, max mem: 10794.0, experiment: run, epoch: 17, num_updates: 4400, iterations: 4400, max_updates: 22000, lr: 0.00001, ups: 1.04, time: 01m 36s 365ms, time_since_start: 01h 15m 14s 518ms, eta: 04h 47m 28s 603ms
+2022-04-25T22:37:58 | INFO | mmf.trainers.callbacks.logistics : progress: 4500/22000, train/hateful_memes/cross_entropy: 0.0417, train/hateful_memes/cross_entropy/avg: 0.2613, train/total_loss: 0.0417, train/total_loss/avg: 0.2613, max mem: 10794.0, experiment: run, epoch: 17, num_updates: 4500, iterations: 4500, max_updates: 22000, lr: 0.00001, ups: 1.04, time: 01m 36s 662ms, time_since_start: 01h 16m 51s 180ms, eta: 04h 46m 43s 427ms
+2022-04-25T22:39:34 | INFO | mmf.trainers.callbacks.logistics : progress: 4600/22000, train/hateful_memes/cross_entropy: 0.0297, train/hateful_memes/cross_entropy/avg: 0.2561, train/total_loss: 0.0297, train/total_loss/avg: 0.2561, max mem: 10794.0, experiment: run, epoch: 18, num_updates: 4600, iterations: 4600, max_updates: 22000, lr: 0.00001, ups: 1.04, time: 01m 36s 214ms, time_since_start: 01h 18m 27s 394ms, eta: 04h 43m 45s 944ms
+2022-04-25T22:41:11 | INFO | mmf.trainers.callbacks.logistics : progress: 4700/22000, train/hateful_memes/cross_entropy: 0.0297, train/hateful_memes/cross_entropy/avg: 0.2513, train/total_loss: 0.0297, train/total_loss/avg: 0.2513, max mem: 10794.0, experiment: run, epoch: 18, num_updates: 4700, iterations: 4700, max_updates: 22000, lr: 0.00001, ups: 1.04, time: 01m 36s 282ms, time_since_start: 01h 20m 03s 677ms, eta: 04h 42m 20s 104ms
+2022-04-25T22:42:47 | INFO | mmf.trainers.callbacks.logistics : progress: 4800/22000, train/hateful_memes/cross_entropy: 0.0196, train/hateful_memes/cross_entropy/avg: 0.2462, train/total_loss: 0.0196, train/total_loss/avg: 0.2462, max mem: 10794.0, experiment: run, epoch: 19, num_updates: 4800, iterations: 4800, max_updates: 22000, lr: 0.00001, ups: 1.05, time: 01m 35s 788ms, time_since_start: 01h 21m 39s 466ms, eta: 04h 39m 15s 752ms
+2022-04-25T22:44:23 | INFO | mmf.trainers.callbacks.logistics : progress: 4900/22000, train/hateful_memes/cross_entropy: 0.0196, train/hateful_memes/cross_entropy/avg: 0.2417, train/total_loss: 0.0196, train/total_loss/avg: 0.2417, max mem: 10794.0, experiment: run, epoch: 19, num_updates: 4900, iterations: 4900, max_updates: 22000, lr: 0.00001, ups: 1.04, time: 01m 36s 351ms, time_since_start: 01h 23m 15s 817ms, eta: 04h 39m 16s 149ms
+2022-04-25T22:45:59 | INFO | mmf.trainers.callbacks.checkpoint : Checkpoint time. Saving a checkpoint.
+2022-04-25T22:45:59 | INFO | mmf.utils.checkpoint : Checkpoint save operation started!
+2022-04-25T22:46:10 | INFO | mmf.utils.checkpoint : Saving current checkpoint
+2022-04-25T22:46:22 | INFO | mmf.utils.checkpoint : Checkpoint save operation finished!
+2022-04-25T22:46:22 | INFO | mmf.trainers.callbacks.logistics : progress: 5000/22000, train/hateful_memes/cross_entropy: 0.0178, train/hateful_memes/cross_entropy/avg: 0.2370, train/total_loss: 0.0178, train/total_loss/avg: 0.2370, max mem: 10794.0, experiment: run, epoch: 19, num_updates: 5000, iterations: 5000, max_updates: 22000, lr: 0.00001, ups: 0.84, time: 01m 59s 427ms, time_since_start: 01h 25m 15s 244ms, eta: 05h 44m 07s 777ms
+2022-04-25T22:46:22 | INFO | mmf.trainers.core.training_loop : Evaluation time. Running on full validation set...
+2022-04-25T22:46:22 | INFO | mmf.common.test_reporter : Predicting for hateful_memes
+2022-04-25T22:46:30 | INFO | mmf.trainers.core.evaluation_loop : Finished training. Loaded 17
+2022-04-25T22:46:30 | INFO | mmf.trainers.core.evaluation_loop :  -- skipped 0 batches.
+2022-04-25T22:46:30 | INFO | mmf.utils.checkpoint : Checkpoint save operation started!
+2022-04-25T22:46:45 | INFO | mmf.utils.checkpoint : Saving current checkpoint
+2022-04-25T22:46:56 | INFO | mmf.utils.checkpoint : Checkpoint save operation finished!
+2022-04-25T22:46:56 | INFO | mmf.trainers.callbacks.logistics : progress: 5000/22000, val/hateful_memes/cross_entropy: 2.2302, val/total_loss: 2.2302, val/hateful_memes/accuracy: 0.6704, val/hateful_memes/binary_f1: 0.3308, val/hateful_memes/roc_auc: 0.6700, num_updates: 5000, epoch: 19, iterations: 5000, max_updates: 22000, val_time: 34s 067ms, best_update: 3000, best_iteration: 3000, best_val/hateful_memes/roc_auc: 0.698235
+2022-04-25T22:48:35 | INFO | mmf.trainers.callbacks.logistics : progress: 5100/22000, train/hateful_memes/cross_entropy: 0.0178, train/hateful_memes/cross_entropy/avg: 0.2325, train/total_loss: 0.0178, train/total_loss/avg: 0.2325, max mem: 10794.0, experiment: run, epoch: 20, num_updates: 5100, iterations: 5100, max_updates: 22000, lr: 0.00001, ups: 1.02, time: 01m 38s 913ms, time_since_start: 01h 27m 28s 227ms, eta: 04h 43m 20s 486ms
+2022-04-25T22:50:12 | INFO | mmf.trainers.callbacks.logistics : progress: 5200/22000, train/hateful_memes/cross_entropy: 0.0178, train/hateful_memes/cross_entropy/avg: 0.2282, train/total_loss: 0.0178, train/total_loss/avg: 0.2282, max mem: 10794.0, experiment: run, epoch: 20, num_updates: 5200, iterations: 5200, max_updates: 22000, lr: 0.00001, ups: 1.03, time: 01m 37s 008ms, time_since_start: 01h 29m 05s 235ms, eta: 04h 36m 14s 497ms
+2022-04-25T22:51:49 | INFO | mmf.trainers.callbacks.logistics : progress: 5300/22000, train/hateful_memes/cross_entropy: 0.0120, train/hateful_memes/cross_entropy/avg: 0.2241, train/total_loss: 0.0120, train/total_loss/avg: 0.2241, max mem: 10794.0, experiment: run, epoch: 20, num_updates: 5300, iterations: 5300, max_updates: 22000, lr: 0.00001, ups: 1.04, time: 01m 36s 548ms, time_since_start: 01h 30m 41s 784ms, eta: 04h 33m 17s 783ms
+2022-04-25T22:53:25 | INFO | mmf.trainers.callbacks.logistics : progress: 5400/22000, train/hateful_memes/cross_entropy: 0.0115, train/hateful_memes/cross_entropy/avg: 0.2202, train/total_loss: 0.0115, train/total_loss/avg: 0.2202, max mem: 10794.0, experiment: run, epoch: 21, num_updates: 5400, iterations: 5400, max_updates: 22000, lr: 0.00001, ups: 1.04, time: 01m 36s 411ms, time_since_start: 01h 32m 18s 196ms, eta: 04h 31m 16s 372ms
+2022-04-25T22:55:02 | INFO | mmf.trainers.callbacks.logistics : progress: 5500/22000, train/hateful_memes/cross_entropy: 0.0115, train/hateful_memes/cross_entropy/avg: 0.2166, train/total_loss: 0.0115, train/total_loss/avg: 0.2166, max mem: 10794.0, experiment: run, epoch: 21, num_updates: 5500, iterations: 5500, max_updates: 22000, lr: 0.00001, ups: 1.04, time: 01m 36s 950ms, time_since_start: 01h 33m 55s 146ms, eta: 04h 31m 08s 736ms
+2022-04-25T22:56:39 | INFO | mmf.trainers.callbacks.logistics : progress: 5600/22000, train/hateful_memes/cross_entropy: 0.0115, train/hateful_memes/cross_entropy/avg: 0.2128, train/total_loss: 0.0115, train/total_loss/avg: 0.2128, max mem: 10794.0, experiment: run, epoch: 22, num_updates: 5600, iterations: 5600, max_updates: 22000, lr: 0.00001, ups: 1.04, time: 01m 36s 761ms, time_since_start: 01h 35m 31s 908ms, eta: 04h 28m 58s 709ms
+2022-04-25T22:58:16 | INFO | mmf.trainers.callbacks.logistics : progress: 5700/22000, train/hateful_memes/cross_entropy: 0.0104, train/hateful_memes/cross_entropy/avg: 0.2092, train/total_loss: 0.0104, train/total_loss/avg: 0.2092, max mem: 10794.0, experiment: run, epoch: 22, num_updates: 5700, iterations: 5700, max_updates: 22000, lr: 0.00001, ups: 1.04, time: 01m 36s 506ms, time_since_start: 01h 37m 08s 414ms, eta: 04h 26m 37s 957ms
+2022-04-25T22:59:52 | INFO | mmf.trainers.callbacks.logistics : progress: 5800/22000, train/hateful_memes/cross_entropy: 0.0098, train/hateful_memes/cross_entropy/avg: 0.2056, train/total_loss: 0.0098, train/total_loss/avg: 0.2056, max mem: 10794.0, experiment: run, epoch: 22, num_updates: 5800, iterations: 5800, max_updates: 22000, lr: 0.00001, ups: 1.04, time: 01m 36s 289ms, time_since_start: 01h 38m 44s 704ms, eta: 04h 24m 24s 122ms
+2022-04-25T23:01:28 | INFO | mmf.trainers.callbacks.logistics : progress: 5900/22000, train/hateful_memes/cross_entropy: 0.0098, train/hateful_memes/cross_entropy/avg: 0.2022, train/total_loss: 0.0098, train/total_loss/avg: 0.2022, max mem: 10794.0, experiment: run, epoch: 23, num_updates: 5900, iterations: 5900, max_updates: 22000, lr: 0.00001, ups: 1.05, time: 01m 35s 755ms, time_since_start: 01h 40m 20s 459ms, eta: 04h 21m 18s 640ms
+2022-04-25T23:03:04 | INFO | mmf.trainers.callbacks.checkpoint : Checkpoint time. Saving a checkpoint.
+2022-04-25T23:03:04 | INFO | mmf.utils.checkpoint : Checkpoint save operation started!
+2022-04-25T23:03:17 | INFO | mmf.utils.checkpoint : Saving current checkpoint
+2022-04-25T23:03:29 | INFO | mmf.utils.checkpoint : Checkpoint save operation finished!
+2022-04-25T23:03:29 | INFO | mmf.trainers.callbacks.logistics : progress: 6000/22000, train/hateful_memes/cross_entropy: 0.0104, train/hateful_memes/cross_entropy/avg: 0.1991, train/total_loss: 0.0104, train/total_loss/avg: 0.1991, max mem: 10794.0, experiment: run, epoch: 23, num_updates: 6000, iterations: 6000, max_updates: 22000, lr: 0.00001, ups: 0.83, time: 02m 01s 625ms, time_since_start: 01h 42m 22s 091ms, eta: 05h 29m 52s 027ms
+2022-04-25T23:03:29 | INFO | mmf.trainers.core.training_loop : Evaluation time. Running on full validation set...
+2022-04-25T23:03:29 | INFO | mmf.common.test_reporter : Predicting for hateful_memes
+2022-04-25T23:03:36 | INFO | mmf.trainers.core.evaluation_loop : Finished training. Loaded 17
+2022-04-25T23:03:36 | INFO | mmf.trainers.core.evaluation_loop :  -- skipped 0 batches.
+2022-04-25T23:03:36 | INFO | mmf.utils.checkpoint : Checkpoint save operation started!
+2022-04-25T23:03:49 | INFO | mmf.utils.checkpoint : Saving current checkpoint
+2022-04-25T23:04:01 | INFO | mmf.utils.checkpoint : Checkpoint save operation finished!
+2022-04-25T23:04:01 | INFO | mmf.trainers.callbacks.logistics : progress: 6000/22000, val/hateful_memes/cross_entropy: 1.8912, val/total_loss: 1.8912, val/hateful_memes/accuracy: 0.6537, val/hateful_memes/binary_f1: 0.5040, val/hateful_memes/roc_auc: 0.6856, num_updates: 6000, epoch: 23, iterations: 6000, max_updates: 22000, val_time: 31s 686ms, best_update: 3000, best_iteration: 3000, best_val/hateful_memes/roc_auc: 0.698235
+2022-04-25T23:05:40 | INFO | mmf.trainers.callbacks.logistics : progress: 6100/22000, train/hateful_memes/cross_entropy: 0.0098, train/hateful_memes/cross_entropy/avg: 0.1959, train/total_loss: 0.0098, train/total_loss/avg: 0.1959, max mem: 10794.0, experiment: run, epoch: 23, num_updates: 6100, iterations: 6100, max_updates: 22000, lr: 0.00001, ups: 1.01, time: 01m 39s 187ms, time_since_start: 01h 44m 32s 970ms, eta: 04h 27m 18s 888ms
+2022-04-25T23:07:17 | INFO | mmf.trainers.callbacks.logistics : progress: 6200/22000, train/hateful_memes/cross_entropy: 0.0098, train/hateful_memes/cross_entropy/avg: 0.1929, train/total_loss: 0.0098, train/total_loss/avg: 0.1929, max mem: 10794.0, experiment: run, epoch: 24, num_updates: 6200, iterations: 6200, max_updates: 22000, lr: 0.00001, ups: 1.04, time: 01m 36s 946ms, time_since_start: 01h 46m 09s 916ms, eta: 04h 19m 37s 997ms
+2022-04-25T23:08:54 | INFO | mmf.trainers.callbacks.logistics : progress: 6300/22000, train/hateful_memes/cross_entropy: 0.0067, train/hateful_memes/cross_entropy/avg: 0.1899, train/total_loss: 0.0067, train/total_loss/avg: 0.1899, max mem: 10794.0, experiment: run, epoch: 24, num_updates: 6300, iterations: 6300, max_updates: 22000, lr: 0.00001, ups: 1.04, time: 01m 36s 757ms, time_since_start: 01h 47m 46s 674ms, eta: 04h 17m 29s 218ms
+2022-04-25T23:10:30 | INFO | mmf.trainers.callbacks.logistics : progress: 6400/22000, train/hateful_memes/cross_entropy: 0.0064, train/hateful_memes/cross_entropy/avg: 0.1870, train/total_loss: 0.0064, train/total_loss/avg: 0.1870, max mem: 10794.0, experiment: run, epoch: 25, num_updates: 6400, iterations: 6400, max_updates: 22000, lr: 0.00001, ups: 1.04, time: 01m 36s 212ms, time_since_start: 01h 49m 22s 886ms, eta: 04h 14m 24s 264ms
+2022-04-25T23:12:06 | INFO | mmf.trainers.callbacks.logistics : progress: 6500/22000, train/hateful_memes/cross_entropy: 0.0067, train/hateful_memes/cross_entropy/avg: 0.1857, train/total_loss: 0.0067, train/total_loss/avg: 0.1857, max mem: 10794.0, experiment: run, epoch: 25, num_updates: 6500, iterations: 6500, max_updates: 22000, lr: 0.00001, ups: 1.04, time: 01m 36s 370ms, time_since_start: 01h 50m 59s 257ms, eta: 04h 13m 11s 308ms
+2022-04-25T23:13:43 | INFO | mmf.trainers.callbacks.logistics : progress: 6600/22000, train/hateful_memes/cross_entropy: 0.0067, train/hateful_memes/cross_entropy/avg: 0.1832, train/total_loss: 0.0067, train/total_loss/avg: 0.1832, max mem: 10794.0, experiment: run, epoch: 25, num_updates: 6600, iterations: 6600, max_updates: 22000, lr: 0.00001, ups: 1.04, time: 01m 36s 258ms, time_since_start: 01h 52m 35s 515ms, eta: 04h 11m 15s 861ms
+2022-04-25T23:15:19 | INFO | mmf.trainers.callbacks.logistics : progress: 6700/22000, train/hateful_memes/cross_entropy: 0.0064, train/hateful_memes/cross_entropy/avg: 0.1805, train/total_loss: 0.0064, train/total_loss/avg: 0.1805, max mem: 10794.0, experiment: run, epoch: 26, num_updates: 6700, iterations: 6700, max_updates: 22000, lr: 0.00001, ups: 1.04, time: 01m 36s 122ms, time_since_start: 01h 54m 11s 638ms, eta: 04h 09m 16s 711ms
+2022-04-25T23:16:55 | INFO | mmf.trainers.callbacks.logistics : progress: 6800/22000, train/hateful_memes/cross_entropy: 0.0067, train/hateful_memes/cross_entropy/avg: 0.1780, train/total_loss: 0.0067, train/total_loss/avg: 0.1780, max mem: 10794.0, experiment: run, epoch: 26, num_updates: 6800, iterations: 6800, max_updates: 22000, lr: 0.00001, ups: 1.04, time: 01m 36s 242ms, time_since_start: 01h 55m 47s 880ms, eta: 04h 07m 57s 508ms
+2022-04-25T23:18:31 | INFO | mmf.trainers.callbacks.logistics : progress: 6900/22000, train/hateful_memes/cross_entropy: 0.0067, train/hateful_memes/cross_entropy/avg: 0.1755, train/total_loss: 0.0067, train/total_loss/avg: 0.1755, max mem: 10794.0, experiment: run, epoch: 26, num_updates: 6900, iterations: 6900, max_updates: 22000, lr: 0.00001, ups: 1.04, time: 01m 36s 426ms, time_since_start: 01h 57m 24s 306ms, eta: 04h 06m 47s 912ms
+2022-04-25T23:20:07 | INFO | mmf.trainers.callbacks.checkpoint : Checkpoint time. Saving a checkpoint.
+2022-04-25T23:20:07 | INFO | mmf.utils.checkpoint : Checkpoint save operation started!
+2022-04-25T23:20:19 | INFO | mmf.utils.checkpoint : Saving current checkpoint
+2022-04-25T23:20:31 | INFO | mmf.utils.checkpoint : Checkpoint save operation finished!
+2022-04-25T23:20:31 | INFO | mmf.trainers.callbacks.logistics : progress: 7000/22000, train/hateful_memes/cross_entropy: 0.0064, train/hateful_memes/cross_entropy/avg: 0.1730, train/total_loss: 0.0064, train/total_loss/avg: 0.1730, max mem: 10794.0, experiment: run, epoch: 27, num_updates: 7000, iterations: 7000, max_updates: 22000, lr: 0.00001, ups: 0.83, time: 02m 080ms, time_since_start: 01h 59m 24s 387ms, eta: 05h 05m 18s 355ms
+2022-04-25T23:20:31 | INFO | mmf.trainers.core.training_loop : Evaluation time. Running on full validation set...
+2022-04-25T23:20:31 | INFO | mmf.common.test_reporter : Predicting for hateful_memes
+2022-04-25T23:20:38 | INFO | mmf.trainers.core.evaluation_loop : Finished training. Loaded 17
+2022-04-25T23:20:38 | INFO | mmf.trainers.core.evaluation_loop :  -- skipped 0 batches.
+2022-04-25T23:20:38 | INFO | mmf.utils.checkpoint : Checkpoint save operation started!
+2022-04-25T23:20:51 | INFO | mmf.utils.checkpoint : Saving current checkpoint
+2022-04-25T23:21:03 | INFO | mmf.utils.checkpoint : Checkpoint save operation finished!
+2022-04-25T23:21:03 | INFO | mmf.trainers.callbacks.logistics : progress: 7000/22000, val/hateful_memes/cross_entropy: 2.2968, val/total_loss: 2.2968, val/hateful_memes/accuracy: 0.6778, val/hateful_memes/binary_f1: 0.4314, val/hateful_memes/roc_auc: 0.6961, num_updates: 7000, epoch: 27, iterations: 7000, max_updates: 22000, val_time: 31s 127ms, best_update: 3000, best_iteration: 3000, best_val/hateful_memes/roc_auc: 0.698235
+2022-04-25T23:22:41 | INFO | mmf.trainers.callbacks.logistics : progress: 7100/22000, train/hateful_memes/cross_entropy: 0.0064, train/hateful_memes/cross_entropy/avg: 0.1709, train/total_loss: 0.0064, train/total_loss/avg: 0.1709, max mem: 10794.0, experiment: run, epoch: 27, num_updates: 7100, iterations: 7100, max_updates: 22000, lr: 0.00001, ups: 1.02, time: 01m 38s 878ms, time_since_start: 02h 01m 34s 396ms, eta: 04h 09m 43s 403ms
+2022-04-25T23:24:19 | INFO | mmf.trainers.callbacks.logistics : progress: 7200/22000, train/hateful_memes/cross_entropy: 0.0060, train/hateful_memes/cross_entropy/avg: 0.1685, train/total_loss: 0.0060, train/total_loss/avg: 0.1685, max mem: 10794.0, experiment: run, epoch: 28, num_updates: 7200, iterations: 7200, max_updates: 22000, lr: 0.00001, ups: 1.03, time: 01m 37s 615ms, time_since_start: 02h 03m 12s 011ms, eta: 04h 04m 52s 641ms
+2022-04-25T23:25:56 | INFO | mmf.trainers.callbacks.logistics : progress: 7300/22000, train/hateful_memes/cross_entropy: 0.0056, train/hateful_memes/cross_entropy/avg: 0.1662, train/total_loss: 0.0056, train/total_loss/avg: 0.1662, max mem: 10794.0, experiment: run, epoch: 28, num_updates: 7300, iterations: 7300, max_updates: 22000, lr: 0.00001, ups: 1.03, time: 01m 37s 164ms, time_since_start: 02h 04m 49s 176ms, eta: 04h 02m 06s 030ms
+2022-04-25T23:27:33 | INFO | mmf.trainers.callbacks.logistics : progress: 7400/22000, train/hateful_memes/cross_entropy: 0.0055, train/hateful_memes/cross_entropy/avg: 0.1640, train/total_loss: 0.0055, train/total_loss/avg: 0.1640, max mem: 10794.0, experiment: run, epoch: 28, num_updates: 7400, iterations: 7400, max_updates: 22000, lr: 0.00001, ups: 1.04, time: 01m 36s 854ms, time_since_start: 02h 06m 26s 030ms, eta: 03h 59m 41s 092ms
+2022-04-25T23:29:10 | INFO | mmf.trainers.callbacks.logistics : progress: 7500/22000, train/hateful_memes/cross_entropy: 0.0039, train/hateful_memes/cross_entropy/avg: 0.1618, train/total_loss: 0.0039, train/total_loss/avg: 0.1618, max mem: 10794.0, experiment: run, epoch: 29, num_updates: 7500, iterations: 7500, max_updates: 22000, lr: 0.00001, ups: 1.04, time: 01m 36s 519ms, time_since_start: 02h 08m 02s 549ms, eta: 03h 57m 13s 280ms
+2022-04-25T23:30:46 | INFO | mmf.trainers.callbacks.logistics : progress: 7600/22000, train/hateful_memes/cross_entropy: 0.0036, train/hateful_memes/cross_entropy/avg: 0.1597, train/total_loss: 0.0036, train/total_loss/avg: 0.1597, max mem: 10794.0, experiment: run, epoch: 29, num_updates: 7600, iterations: 7600, max_updates: 22000, lr: 0.00001, ups: 1.04, time: 01m 36s 559ms, time_since_start: 02h 09m 39s 109ms, eta: 03h 55m 40s 980ms
+2022-04-25T23:32:23 | INFO | mmf.trainers.callbacks.logistics : progress: 7700/22000, train/hateful_memes/cross_entropy: 0.0035, train/hateful_memes/cross_entropy/avg: 0.1576, train/total_loss: 0.0035, train/total_loss/avg: 0.1576, max mem: 10794.0, experiment: run, epoch: 29, num_updates: 7700, iterations: 7700, max_updates: 22000, lr: 0.00001, ups: 1.04, time: 01m 36s 697ms, time_since_start: 02h 11m 15s 807ms, eta: 03h 54m 22s 814ms
+2022-04-25T23:33:59 | INFO | mmf.trainers.callbacks.logistics : progress: 7800/22000, train/hateful_memes/cross_entropy: 0.0035, train/hateful_memes/cross_entropy/avg: 0.1556, train/total_loss: 0.0035, train/total_loss/avg: 0.1556, max mem: 10794.0, experiment: run, epoch: 30, num_updates: 7800, iterations: 7800, max_updates: 22000, lr: 0.00001, ups: 1.04, time: 01m 36s 382ms, time_since_start: 02h 12m 52s 189ms, eta: 03h 51m 58s 929ms
+2022-04-25T23:35:36 | INFO | mmf.trainers.callbacks.logistics : progress: 7900/22000, train/hateful_memes/cross_entropy: 0.0032, train/hateful_memes/cross_entropy/avg: 0.1537, train/total_loss: 0.0032, train/total_loss/avg: 0.1537, max mem: 10794.0, experiment: run, epoch: 30, num_updates: 7900, iterations: 7900, max_updates: 22000, lr: 0.00001, ups: 1.04, time: 01m 36s 566ms, time_since_start: 02h 14m 28s 755ms, eta: 03h 50m 47s 295ms
+2022-04-25T23:37:12 | INFO | mmf.trainers.callbacks.checkpoint : Checkpoint time. Saving a checkpoint.
+2022-04-25T23:37:12 | INFO | mmf.utils.checkpoint : Checkpoint save operation started!
+2022-04-25T23:37:25 | INFO | mmf.utils.checkpoint : Saving current checkpoint
+2022-04-25T23:37:38 | INFO | mmf.utils.checkpoint : Checkpoint save operation finished!
+2022-04-25T23:37:38 | INFO | mmf.trainers.callbacks.logistics : progress: 8000/22000, train/hateful_memes/cross_entropy: 0.0027, train/hateful_memes/cross_entropy/avg: 0.1518, train/total_loss: 0.0027, train/total_loss/avg: 0.1518, max mem: 10794.0, experiment: run, epoch: 31, num_updates: 8000, iterations: 8000, max_updates: 22000, lr: 0.00001, ups: 0.83, time: 02m 01s 805ms, time_since_start: 02h 16m 30s 560ms, eta: 04h 49m 02s 660ms
+2022-04-25T23:37:38 | INFO | mmf.trainers.core.training_loop : Evaluation time. Running on full validation set...
+2022-04-25T23:37:38 | INFO | mmf.common.test_reporter : Predicting for hateful_memes
+2022-04-25T23:37:44 | INFO | mmf.trainers.core.evaluation_loop : Finished training. Loaded 17
+2022-04-25T23:37:44 | INFO | mmf.trainers.core.evaluation_loop :  -- skipped 0 batches.
+2022-04-25T23:37:45 | INFO | mmf.utils.checkpoint : Checkpoint save operation started!
+2022-04-25T23:37:57 | INFO | mmf.utils.checkpoint : Saving current checkpoint
+2022-04-25T23:38:10 | INFO | mmf.utils.checkpoint : Checkpoint save operation finished!
+2022-04-25T23:38:10 | INFO | mmf.trainers.callbacks.logistics : progress: 8000/22000, val/hateful_memes/cross_entropy: 2.3556, val/total_loss: 2.3556, val/hateful_memes/accuracy: 0.6944, val/hateful_memes/binary_f1: 0.4590, val/hateful_memes/roc_auc: 0.6975, num_updates: 8000, epoch: 31, iterations: 8000, max_updates: 22000, val_time: 32s 387ms, best_update: 3000, best_iteration: 3000, best_val/hateful_memes/roc_auc: 0.698235
+2022-04-25T23:39:49 | INFO | mmf.trainers.callbacks.logistics : progress: 8100/22000, train/hateful_memes/cross_entropy: 0.0027, train/hateful_memes/cross_entropy/avg: 0.1499, train/total_loss: 0.0027, train/total_loss/avg: 0.1499, max mem: 10794.0, experiment: run, epoch: 31, num_updates: 8100, iterations: 8100, max_updates: 22000, lr: 0.00001, ups: 1.02, time: 01m 38s 979ms, time_since_start: 02h 18m 41s 929ms, eta: 03h 53m 12s 036ms
+2022-04-25T23:41:26 | INFO | mmf.trainers.callbacks.logistics : progress: 8200/22000, train/hateful_memes/cross_entropy: 0.0027, train/hateful_memes/cross_entropy/avg: 0.1481, train/total_loss: 0.0027, train/total_loss/avg: 0.1481, max mem: 10794.0, experiment: run, epoch: 31, num_updates: 8200, iterations: 8200, max_updates: 22000, lr: 0.00001, ups: 1.03, time: 01m 37s 329ms, time_since_start: 02h 20m 19s 259ms, eta: 03h 47m 39s 779ms
+2022-04-25T23:43:03 | INFO | mmf.trainers.callbacks.logistics : progress: 8300/22000, train/hateful_memes/cross_entropy: 0.0019, train/hateful_memes/cross_entropy/avg: 0.1464, train/total_loss: 0.0019, train/total_loss/avg: 0.1464, max mem: 10794.0, experiment: run, epoch: 32, num_updates: 8300, iterations: 8300, max_updates: 22000, lr: 0.00001, ups: 1.04, time: 01m 36s 748ms, time_since_start: 02h 21m 56s 007ms, eta: 03h 44m 39s 887ms
+2022-04-25T23:44:40 | INFO | mmf.trainers.callbacks.logistics : progress: 8400/22000, train/hateful_memes/cross_entropy: 0.0018, train/hateful_memes/cross_entropy/avg: 0.1446, train/total_loss: 0.0018, train/total_loss/avg: 0.1446, max mem: 10794.0, experiment: run, epoch: 32, num_updates: 8400, iterations: 8400, max_updates: 22000, lr: 0.00001, ups: 1.04, time: 01m 36s 841ms, time_since_start: 02h 23m 32s 848ms, eta: 03h 43m 14s 286ms
+2022-04-25T23:46:17 | INFO | mmf.trainers.callbacks.logistics : progress: 8500/22000, train/hateful_memes/cross_entropy: 0.0011, train/hateful_memes/cross_entropy/avg: 0.1429, train/total_loss: 0.0011, train/total_loss/avg: 0.1429, max mem: 10794.0, experiment: run, epoch: 32, num_updates: 8500, iterations: 8500, max_updates: 22000, lr: 0.00001, ups: 1.04, time: 01m 36s 961ms, time_since_start: 02h 25m 09s 810ms, eta: 03h 41m 52s 323ms
+2022-04-25T23:47:53 | INFO | mmf.trainers.callbacks.logistics : progress: 8600/22000, train/hateful_memes/cross_entropy: 0.0010, train/hateful_memes/cross_entropy/avg: 0.1413, train/total_loss: 0.0010, train/total_loss/avg: 0.1413, max mem: 10794.0, experiment: run, epoch: 33, num_updates: 8600, iterations: 8600, max_updates: 22000, lr: 0.00001, ups: 1.05, time: 01m 35s 897ms, time_since_start: 02h 26m 45s 707ms, eta: 03h 37m 48s 684ms
+2022-04-25T23:49:29 | INFO | mmf.trainers.callbacks.logistics : progress: 8700/22000, train/hateful_memes/cross_entropy: 0.0008, train/hateful_memes/cross_entropy/avg: 0.1397, train/total_loss: 0.0008, train/total_loss/avg: 0.1397, max mem: 10794.0, experiment: run, epoch: 33, num_updates: 8700, iterations: 8700, max_updates: 22000, lr: 0.00001, ups: 1.04, time: 01m 36s 323ms, time_since_start: 02h 28m 22s 031ms, eta: 03h 37m 08s 830ms
+2022-04-25T23:51:05 | INFO | mmf.trainers.callbacks.logistics : progress: 8800/22000, train/hateful_memes/cross_entropy: 0.0008, train/hateful_memes/cross_entropy/avg: 0.1381, train/total_loss: 0.0008, train/total_loss/avg: 0.1381, max mem: 10794.0, experiment: run, epoch: 34, num_updates: 8800, iterations: 8800, max_updates: 22000, lr: 0.00001, ups: 1.04, time: 01m 36s 260ms, time_since_start: 02h 29m 58s 291ms, eta: 03h 35m 22s 380ms
+2022-04-25T23:52:42 | INFO | mmf.trainers.callbacks.logistics : progress: 8900/22000, train/hateful_memes/cross_entropy: 0.0008, train/hateful_memes/cross_entropy/avg: 0.1366, train/total_loss: 0.0008, train/total_loss/avg: 0.1366, max mem: 10794.0, experiment: run, epoch: 34, num_updates: 8900, iterations: 8900, max_updates: 22000, lr: 0.00001, ups: 1.04, time: 01m 36s 387ms, time_since_start: 02h 31m 34s 678ms, eta: 03h 34m 01s 390ms
+2022-04-25T23:54:18 | INFO | mmf.trainers.callbacks.checkpoint : Checkpoint time. Saving a checkpoint.
+2022-04-25T23:54:18 | INFO | mmf.utils.checkpoint : Checkpoint save operation started!
+2022-04-25T23:54:30 | INFO | mmf.utils.checkpoint : Saving current checkpoint
+2022-04-25T23:54:43 | INFO | mmf.utils.checkpoint : Checkpoint save operation finished!
+2022-04-25T23:54:43 | INFO | mmf.trainers.callbacks.logistics : progress: 9000/22000, train/hateful_memes/cross_entropy: 0.0008, train/hateful_memes/cross_entropy/avg: 0.1354, train/total_loss: 0.0008, train/total_loss/avg: 0.1354, max mem: 10794.0, experiment: run, epoch: 34, num_updates: 9000, iterations: 9000, max_updates: 22000, lr: 0.00001, ups: 0.83, time: 02m 01s 031ms, time_since_start: 02h 33m 35s 709ms, eta: 04h 26m 41s 523ms
+2022-04-25T23:54:43 | INFO | mmf.trainers.core.training_loop : Evaluation time. Running on full validation set...
+2022-04-25T23:54:43 | INFO | mmf.common.test_reporter : Predicting for hateful_memes
+2022-04-25T23:54:49 | INFO | mmf.trainers.core.evaluation_loop : Finished training. Loaded 17
+2022-04-25T23:54:49 | INFO | mmf.trainers.core.evaluation_loop :  -- skipped 0 batches.
+2022-04-25T23:54:50 | INFO | mmf.utils.checkpoint : Checkpoint save operation started!
+2022-04-25T23:55:04 | INFO | mmf.utils.checkpoint : Saving best checkpoint
+2022-04-25T23:55:40 | INFO | mmf.utils.checkpoint : Saving current checkpoint
+2022-04-25T23:55:53 | INFO | mmf.utils.checkpoint : Checkpoint save operation finished!
+2022-04-25T23:55:53 | INFO | mmf.trainers.callbacks.logistics : progress: 9000/22000, val/hateful_memes/cross_entropy: 2.0367, val/total_loss: 2.0367, val/hateful_memes/accuracy: 0.6889, val/hateful_memes/binary_f1: 0.5484, val/hateful_memes/roc_auc: 0.7167, num_updates: 9000, epoch: 34, iterations: 9000, max_updates: 22000, val_time: 01m 10s 279ms, best_update: 9000, best_iteration: 9000, best_val/hateful_memes/roc_auc: 0.716680
+2022-04-25T23:57:31 | INFO | mmf.trainers.callbacks.logistics : progress: 9100/22000, train/hateful_memes/cross_entropy: 0.0008, train/hateful_memes/cross_entropy/avg: 0.1340, train/total_loss: 0.0008, train/total_loss/avg: 0.1340, max mem: 10794.0, experiment: run, epoch: 35, num_updates: 9100, iterations: 9100, max_updates: 22000, lr: 0.00001, ups: 1.03, time: 01m 37s 834ms, time_since_start: 02h 36m 23s 825ms, eta: 03h 33m 55s 150ms
+2022-04-25T23:59:08 | INFO | mmf.trainers.callbacks.logistics : progress: 9200/22000, train/hateful_memes/cross_entropy: 0.0008, train/hateful_memes/cross_entropy/avg: 0.1325, train/total_loss: 0.0008, train/total_loss/avg: 0.1325, max mem: 10794.0, experiment: run, epoch: 35, num_updates: 9200, iterations: 9200, max_updates: 22000, lr: 0.00001, ups: 1.03, time: 01m 37s 477ms, time_since_start: 02h 38m 01s 303ms, eta: 03h 31m 29s 251ms
+2022-04-26T00:00:45 | INFO | mmf.trainers.callbacks.logistics : progress: 9300/22000, train/hateful_memes/cross_entropy: 0.0008, train/hateful_memes/cross_entropy/avg: 0.1312, train/total_loss: 0.0008, train/total_loss/avg: 0.1312, max mem: 10794.0, experiment: run, epoch: 35, num_updates: 9300, iterations: 9300, max_updates: 22000, lr: 0.00001, ups: 1.04, time: 01m 36s 521ms, time_since_start: 02h 39m 37s 824ms, eta: 03h 27m 46s 629ms
+2022-04-26T00:02:21 | INFO | mmf.trainers.callbacks.logistics : progress: 9400/22000, train/hateful_memes/cross_entropy: 0.0008, train/hateful_memes/cross_entropy/avg: 0.1298, train/total_loss: 0.0008, train/total_loss/avg: 0.1298, max mem: 10794.0, experiment: run, epoch: 36, num_updates: 9400, iterations: 9400, max_updates: 22000, lr: 0.00001, ups: 1.05, time: 01m 35s 953ms, time_since_start: 02h 41m 13s 778ms, eta: 03h 24m 55s 651ms
+2022-04-26T00:03:57 | INFO | mmf.trainers.callbacks.logistics : progress: 9500/22000, train/hateful_memes/cross_entropy: 0.0008, train/hateful_memes/cross_entropy/avg: 0.1284, train/total_loss: 0.0008, train/total_loss/avg: 0.1284, max mem: 10794.0, experiment: run, epoch: 36, num_updates: 9500, iterations: 9500, max_updates: 22000, lr: 0.00001, ups: 1.04, time: 01m 36s 112ms, time_since_start: 02h 42m 49s 890ms, eta: 03h 23m 38s 320ms
+2022-04-26T00:05:33 | INFO | mmf.trainers.callbacks.logistics : progress: 9600/22000, train/hateful_memes/cross_entropy: 0.0008, train/hateful_memes/cross_entropy/avg: 0.1271, train/total_loss: 0.0008, train/total_loss/avg: 0.1271, max mem: 10794.0, experiment: run, epoch: 37, num_updates: 9600, iterations: 9600, max_updates: 22000, lr: 0.00001, ups: 1.05, time: 01m 35s 536ms, time_since_start: 02h 44m 25s 427ms, eta: 03h 20m 47s 917ms
+2022-04-26T00:07:09 | INFO | mmf.trainers.callbacks.logistics : progress: 9700/22000, train/hateful_memes/cross_entropy: 0.0008, train/hateful_memes/cross_entropy/avg: 0.1258, train/total_loss: 0.0008, train/total_loss/avg: 0.1258, max mem: 10794.0, experiment: run, epoch: 37, num_updates: 9700, iterations: 9700, max_updates: 22000, lr: 0.00001, ups: 1.04, time: 01m 36s 046ms, time_since_start: 02h 46m 01s 473ms, eta: 03h 20m 14s 562ms
+2022-04-26T00:08:45 | INFO | mmf.trainers.callbacks.logistics : progress: 9800/22000, train/hateful_memes/cross_entropy: 0.0008, train/hateful_memes/cross_entropy/avg: 0.1246, train/total_loss: 0.0008, train/total_loss/avg: 0.1246, max mem: 10794.0, experiment: run, epoch: 37, num_updates: 9800, iterations: 9800, max_updates: 22000, lr: 0.00001, ups: 1.04, time: 01m 36s 006ms, time_since_start: 02h 47m 37s 480ms, eta: 03h 18m 31s 928ms
+2022-04-26T00:10:20 | INFO | mmf.trainers.callbacks.logistics : progress: 9900/22000, train/hateful_memes/cross_entropy: 0.0008, train/hateful_memes/cross_entropy/avg: 0.1236, train/total_loss: 0.0008, train/total_loss/avg: 0.1236, max mem: 10794.0, experiment: run, epoch: 38, num_updates: 9900, iterations: 9900, max_updates: 22000, lr: 0.00001, ups: 1.05, time: 01m 35s 740ms, time_since_start: 02h 49m 13s 221ms, eta: 03h 16m 21s 572ms
+2022-04-26T00:11:56 | INFO | mmf.trainers.callbacks.checkpoint : Checkpoint time. Saving a checkpoint.
+2022-04-26T00:11:56 | INFO | mmf.utils.checkpoint : Checkpoint save operation started!
+2022-04-26T00:12:08 | INFO | mmf.utils.checkpoint : Saving current checkpoint
+2022-04-26T00:12:20 | INFO | mmf.utils.checkpoint : Checkpoint save operation finished!
+2022-04-26T00:12:20 | INFO | mmf.trainers.callbacks.logistics : progress: 10000/22000, train/hateful_memes/cross_entropy: 0.0010, train/hateful_memes/cross_entropy/avg: 0.1224, train/total_loss: 0.0010, train/total_loss/avg: 0.1224, max mem: 10794.0, experiment: run, epoch: 38, num_updates: 10000, iterations: 10000, max_updates: 22000, lr: 0.00001, ups: 0.83, time: 02m 030ms, time_since_start: 02h 51m 13s 251ms, eta: 04h 04m 08s 472ms
+2022-04-26T00:12:20 | INFO | mmf.trainers.core.training_loop : Evaluation time. Running on full validation set...
+2022-04-26T00:12:20 | INFO | mmf.common.test_reporter : Predicting for hateful_memes
+2022-04-26T00:12:27 | INFO | mmf.trainers.core.evaluation_loop : Finished training. Loaded 17
+2022-04-26T00:12:27 | INFO | mmf.trainers.core.evaluation_loop :  -- skipped 0 batches.
+2022-04-26T00:12:27 | INFO | mmf.utils.checkpoint : Checkpoint save operation started!
+2022-04-26T00:12:40 | INFO | mmf.utils.checkpoint : Saving current checkpoint
+2022-04-26T00:12:53 | INFO | mmf.utils.checkpoint : Checkpoint save operation finished!
+2022-04-26T00:12:53 | INFO | mmf.trainers.callbacks.logistics : progress: 10000/22000, val/hateful_memes/cross_entropy: 2.4530, val/total_loss: 2.4530, val/hateful_memes/accuracy: 0.6796, val/hateful_memes/binary_f1: 0.4577, val/hateful_memes/roc_auc: 0.7022, num_updates: 10000, epoch: 38, iterations: 10000, max_updates: 22000, val_time: 32s 201ms, best_update: 9000, best_iteration: 9000, best_val/hateful_memes/roc_auc: 0.716680
+2022-04-26T00:14:32 | INFO | mmf.trainers.callbacks.logistics : progress: 10100/22000, train/hateful_memes/cross_entropy: 0.0018, train/hateful_memes/cross_entropy/avg: 0.1213, train/total_loss: 0.0018, train/total_loss/avg: 0.1213, max mem: 10794.0, experiment: run, epoch: 38, num_updates: 10100, iterations: 10100, max_updates: 22000, lr: 0.00001, ups: 1.01, time: 01m 39s 020ms, time_since_start: 02h 53m 24s 474ms, eta: 03h 19m 43s 759ms
+2022-04-26T00:16:08 | INFO | mmf.trainers.callbacks.logistics : progress: 10200/22000, train/hateful_memes/cross_entropy: 0.0015, train/hateful_memes/cross_entropy/avg: 0.1202, train/total_loss: 0.0015, train/total_loss/avg: 0.1202, max mem: 10794.0, experiment: run, epoch: 39, num_updates: 10200, iterations: 10200, max_updates: 22000, lr: 0.00001, ups: 1.04, time: 01m 36s 522ms, time_since_start: 02h 55m 997ms, eta: 03h 13m 03s 337ms
+2022-04-26T00:17:45 | INFO | mmf.trainers.callbacks.logistics : progress: 10300/22000, train/hateful_memes/cross_entropy: 0.0015, train/hateful_memes/cross_entropy/avg: 0.1190, train/total_loss: 0.0015, train/total_loss/avg: 0.1190, max mem: 10794.0, experiment: run, epoch: 39, num_updates: 10300, iterations: 10300, max_updates: 22000, lr: 0.00001, ups: 1.04, time: 01m 36s 425ms, time_since_start: 02h 56m 37s 423ms, eta: 03h 11m 13s 542ms
+2022-04-26T00:19:21 | INFO | mmf.trainers.callbacks.logistics : progress: 10400/22000, train/hateful_memes/cross_entropy: 0.0018, train/hateful_memes/cross_entropy/avg: 0.1182, train/total_loss: 0.0018, train/total_loss/avg: 0.1182, max mem: 10794.0, experiment: run, epoch: 40, num_updates: 10400, iterations: 10400, max_updates: 22000, lr: 0.00001, ups: 1.04, time: 01m 36s 183ms, time_since_start: 02h 58m 13s 606ms, eta: 03h 09m 06s 941ms
+2022-04-26T00:20:57 | INFO | mmf.trainers.callbacks.logistics : progress: 10500/22000, train/hateful_memes/cross_entropy: 0.0019, train/hateful_memes/cross_entropy/avg: 0.1171, train/total_loss: 0.0019, train/total_loss/avg: 0.1171, max mem: 10794.0, experiment: run, epoch: 40, num_updates: 10500, iterations: 10500, max_updates: 22000, lr: 0.00001, ups: 1.04, time: 01m 36s 067ms, time_since_start: 02h 59m 49s 674ms, eta: 03h 07m 15s 587ms
+2022-04-26T00:22:33 | INFO | mmf.trainers.callbacks.logistics : progress: 10600/22000, train/hateful_memes/cross_entropy: 0.0019, train/hateful_memes/cross_entropy/avg: 0.1160, train/total_loss: 0.0019, train/total_loss/avg: 0.1160, max mem: 10794.0, experiment: run, epoch: 40, num_updates: 10600, iterations: 10600, max_updates: 22000, lr: 0.00001, ups: 1.04, time: 01m 36s 012ms, time_since_start: 03h 01m 25s 686ms, eta: 03h 05m 31s 497ms
+2022-04-26T00:24:08 | INFO | mmf.trainers.callbacks.logistics : progress: 10700/22000, train/hateful_memes/cross_entropy: 0.0019, train/hateful_memes/cross_entropy/avg: 0.1149, train/total_loss: 0.0019, train/total_loss/avg: 0.1149, max mem: 10794.0, experiment: run, epoch: 41, num_updates: 10700, iterations: 10700, max_updates: 22000, lr: 0.00001, ups: 1.05, time: 01m 35s 648ms, time_since_start: 03h 03m 01s 335ms, eta: 03h 03m 12s 018ms
+2022-04-26T00:25:44 | INFO | mmf.trainers.callbacks.logistics : progress: 10800/22000, train/hateful_memes/cross_entropy: 0.0019, train/hateful_memes/cross_entropy/avg: 0.1138, train/total_loss: 0.0019, train/total_loss/avg: 0.1138, max mem: 10794.0, experiment: run, epoch: 41, num_updates: 10800, iterations: 10800, max_updates: 22000, lr: 0.00001, ups: 1.04, time: 01m 36s 016ms, time_since_start: 03h 04m 37s 351ms, eta: 03h 02m 16s 625ms
+2022-04-26T00:27:21 | INFO | mmf.trainers.callbacks.logistics : progress: 10900/22000, train/hateful_memes/cross_entropy: 0.0019, train/hateful_memes/cross_entropy/avg: 0.1128, train/total_loss: 0.0019, train/total_loss/avg: 0.1128, max mem: 10794.0, experiment: run, epoch: 41, num_updates: 10900, iterations: 10900, max_updates: 22000, lr: 0.00001, ups: 1.04, time: 01m 36s 082ms, time_since_start: 03h 06m 13s 434ms, eta: 03h 46s 521ms
+2022-04-26T00:28:56 | INFO | mmf.trainers.callbacks.checkpoint : Checkpoint time. Saving a checkpoint.
+2022-04-26T00:28:56 | INFO | mmf.utils.checkpoint : Checkpoint save operation started!
+2022-04-26T00:29:08 | INFO | mmf.utils.checkpoint : Saving current checkpoint
+2022-04-26T00:29:21 | INFO | mmf.utils.checkpoint : Checkpoint save operation finished!
+2022-04-26T00:29:21 | INFO | mmf.trainers.callbacks.logistics : progress: 11000/22000, train/hateful_memes/cross_entropy: 0.0019, train/hateful_memes/cross_entropy/avg: 0.1120, train/total_loss: 0.0019, train/total_loss/avg: 0.1120, max mem: 10794.0, experiment: run, epoch: 42, num_updates: 11000, iterations: 11000, max_updates: 22000, lr: 0.00001, ups: 0.83, time: 02m 905ms, time_since_start: 03h 08m 14s 339ms, eta: 03h 45m 25s 646ms
+2022-04-26T00:29:21 | INFO | mmf.trainers.core.training_loop : Evaluation time. Running on full validation set...
+2022-04-26T00:29:23 | INFO | mmf.common.test_reporter : Predicting for hateful_memes
+2022-04-26T00:29:29 | INFO | mmf.trainers.core.evaluation_loop : Finished training. Loaded 17
+2022-04-26T00:29:29 | INFO | mmf.trainers.core.evaluation_loop :  -- skipped 0 batches.
+2022-04-26T00:29:30 | INFO | mmf.utils.checkpoint : Checkpoint save operation started!
+2022-04-26T00:29:44 | INFO | mmf.utils.checkpoint : Saving current checkpoint
+2022-04-26T00:29:56 | INFO | mmf.utils.checkpoint : Checkpoint save operation finished!
+2022-04-26T00:29:56 | INFO | mmf.trainers.callbacks.logistics : progress: 11000/22000, val/hateful_memes/cross_entropy: 2.3485, val/total_loss: 2.3485, val/hateful_memes/accuracy: 0.6981, val/hateful_memes/binary_f1: 0.4858, val/hateful_memes/roc_auc: 0.7112, num_updates: 11000, epoch: 42, iterations: 11000, max_updates: 22000, val_time: 34s 775ms, best_update: 9000, best_iteration: 9000, best_val/hateful_memes/roc_auc: 0.716680
+2022-04-26T00:31:34 | INFO | mmf.trainers.callbacks.logistics : progress: 11100/22000, train/hateful_memes/cross_entropy: 0.0019, train/hateful_memes/cross_entropy/avg: 0.1111, train/total_loss: 0.0019, train/total_loss/avg: 0.1111, max mem: 10794.0, experiment: run, epoch: 42, num_updates: 11100, iterations: 11100, max_updates: 22000, lr: 0.00001, ups: 1.02, time: 01m 38s 064ms, time_since_start: 03h 10m 27s 181ms, eta: 03h 01m 10s 783ms
+2022-04-26T00:33:11 | INFO | mmf.trainers.callbacks.logistics : progress: 11200/22000, train/hateful_memes/cross_entropy: 0.0016, train/hateful_memes/cross_entropy/avg: 0.1102, train/total_loss: 0.0016, train/total_loss/avg: 0.1102, max mem: 10794.0, experiment: run, epoch: 43, num_updates: 11200, iterations: 11200, max_updates: 22000, lr: 0.00001, ups: 1.04, time: 01m 36s 455ms, time_since_start: 03h 12m 03s 636ms, eta: 02h 56m 34s 282ms
+2022-04-26T00:34:47 | INFO | mmf.trainers.callbacks.logistics : progress: 11300/22000, train/hateful_memes/cross_entropy: 0.0015, train/hateful_memes/cross_entropy/avg: 0.1092, train/total_loss: 0.0015, train/total_loss/avg: 0.1092, max mem: 10794.0, experiment: run, epoch: 43, num_updates: 11300, iterations: 11300, max_updates: 22000, lr: 0.00001, ups: 1.04, time: 01m 36s 581ms, time_since_start: 03h 13m 40s 218ms, eta: 02h 55m 09s 906ms
+2022-04-26T00:36:24 | INFO | mmf.trainers.callbacks.logistics : progress: 11400/22000, train/hateful_memes/cross_entropy: 0.0016, train/hateful_memes/cross_entropy/avg: 0.1083, train/total_loss: 0.0016, train/total_loss/avg: 0.1083, max mem: 10794.0, experiment: run, epoch: 43, num_updates: 11400, iterations: 11400, max_updates: 22000, lr: 0.00001, ups: 1.04, time: 01m 36s 666ms, time_since_start: 03h 15m 16s 884ms, eta: 02h 53m 40s 812ms
+2022-04-26T00:38:00 | INFO | mmf.trainers.callbacks.logistics : progress: 11500/22000, train/hateful_memes/cross_entropy: 0.0016, train/hateful_memes/cross_entropy/avg: 0.1074, train/total_loss: 0.0016, train/total_loss/avg: 0.1074, max mem: 10794.0, experiment: run, epoch: 44, num_updates: 11500, iterations: 11500, max_updates: 22000, lr: 0.00001, ups: 1.04, time: 01m 36s 166ms, time_since_start: 03h 16m 53s 051ms, eta: 02h 51m 09s 168ms
+2022-04-26T00:39:37 | INFO | mmf.trainers.callbacks.logistics : progress: 11600/22000, train/hateful_memes/cross_entropy: 0.0016, train/hateful_memes/cross_entropy/avg: 0.1064, train/total_loss: 0.0016, train/total_loss/avg: 0.1064, max mem: 10794.0, experiment: run, epoch: 44, num_updates: 11600, iterations: 11600, max_updates: 22000, lr: 0.00001, ups: 1.04, time: 01m 36s 416ms, time_since_start: 03h 18m 29s 468ms, eta: 02h 49m 57s 819ms
+2022-04-26T00:41:13 | INFO | mmf.trainers.callbacks.logistics : progress: 11700/22000, train/hateful_memes/cross_entropy: 0.0016, train/hateful_memes/cross_entropy/avg: 0.1055, train/total_loss: 0.0016, train/total_loss/avg: 0.1055, max mem: 10794.0, experiment: run, epoch: 44, num_updates: 11700, iterations: 11700, max_updates: 22000, lr: 0.00001, ups: 1.04, time: 01m 36s 305ms, time_since_start: 03h 20m 05s 773ms, eta: 02h 48m 08s 073ms
+2022-04-26T00:42:49 | INFO | mmf.trainers.callbacks.logistics : progress: 11800/22000, train/hateful_memes/cross_entropy: 0.0015, train/hateful_memes/cross_entropy/avg: 0.1047, train/total_loss: 0.0015, train/total_loss/avg: 0.1047, max mem: 10794.0, experiment: run, epoch: 45, num_updates: 11800, iterations: 11800, max_updates: 22000, lr: 0.00001, ups: 1.05, time: 01m 35s 905ms, time_since_start: 03h 21m 41s 679ms, eta: 02h 45m 48s 675ms
+2022-04-26T00:44:25 | INFO | mmf.trainers.callbacks.logistics : progress: 11900/22000, train/hateful_memes/cross_entropy: 0.0015, train/hateful_memes/cross_entropy/avg: 0.1040, train/total_loss: 0.0015, train/total_loss/avg: 0.1040, max mem: 10794.0, experiment: run, epoch: 45, num_updates: 11900, iterations: 11900, max_updates: 22000, lr: 0.00001, ups: 1.04, time: 01m 36s 165ms, time_since_start: 03h 23m 17s 844ms, eta: 02h 44m 37s 857ms
+2022-04-26T00:46:01 | INFO | mmf.trainers.callbacks.checkpoint : Checkpoint time. Saving a checkpoint.
+2022-04-26T00:46:01 | INFO | mmf.utils.checkpoint : Checkpoint save operation started!
+2022-04-26T00:46:13 | INFO | mmf.utils.checkpoint : Saving current checkpoint
+2022-04-26T00:46:27 | INFO | mmf.utils.checkpoint : Checkpoint save operation finished!
+2022-04-26T00:46:27 | INFO | mmf.trainers.callbacks.logistics : progress: 12000/22000, train/hateful_memes/cross_entropy: 0.0015, train/hateful_memes/cross_entropy/avg: 0.1031, train/total_loss: 0.0015, train/total_loss/avg: 0.1031, max mem: 10794.0, experiment: run, epoch: 46, num_updates: 12000, iterations: 12000, max_updates: 22000, lr: 0.00001, ups: 0.82, time: 02m 02s 299ms, time_since_start: 03h 25m 20s 144ms, eta: 03h 27m 17s 877ms
+2022-04-26T00:46:27 | INFO | mmf.trainers.core.training_loop : Evaluation time. Running on full validation set...
+2022-04-26T00:46:27 | INFO | mmf.common.test_reporter : Predicting for hateful_memes
+2022-04-26T00:46:34 | INFO | mmf.trainers.core.evaluation_loop : Finished training. Loaded 17
+2022-04-26T00:46:34 | INFO | mmf.trainers.core.evaluation_loop :  -- skipped 0 batches.
+2022-04-26T00:46:34 | INFO | mmf.utils.checkpoint : Checkpoint save operation started!
+2022-04-26T00:46:46 | INFO | mmf.utils.checkpoint : Saving current checkpoint
+2022-04-26T00:47:00 | INFO | mmf.utils.checkpoint : Checkpoint save operation finished!
+2022-04-26T00:47:00 | INFO | mmf.trainers.callbacks.logistics : progress: 12000/22000, val/hateful_memes/cross_entropy: 2.6322, val/total_loss: 2.6322, val/hateful_memes/accuracy: 0.6852, val/hateful_memes/binary_f1: 0.4586, val/hateful_memes/roc_auc: 0.6888, num_updates: 12000, epoch: 46, iterations: 12000, max_updates: 22000, val_time: 32s 451ms, best_update: 9000, best_iteration: 9000, best_val/hateful_memes/roc_auc: 0.716680
+2022-04-26T00:48:38 | INFO | mmf.trainers.callbacks.logistics : progress: 12100/22000, train/hateful_memes/cross_entropy: 0.0015, train/hateful_memes/cross_entropy/avg: 0.1023, train/total_loss: 0.0015, train/total_loss/avg: 0.1023, max mem: 10794.0, experiment: run, epoch: 46, num_updates: 12100, iterations: 12100, max_updates: 22000, lr: 0., ups: 1.02, time: 01m 38s 230ms, time_since_start: 03h 27m 30s 828ms, eta: 02h 44m 50s 182ms
+2022-04-26T00:50:15 | INFO | mmf.trainers.callbacks.logistics : progress: 12200/22000, train/hateful_memes/cross_entropy: 0.0014, train/hateful_memes/cross_entropy/avg: 0.1014, train/total_loss: 0.0014, train/total_loss/avg: 0.1014, max mem: 10794.0, experiment: run, epoch: 46, num_updates: 12200, iterations: 12200, max_updates: 22000, lr: 0., ups: 1.04, time: 01m 36s 630ms, time_since_start: 03h 29m 07s 458ms, eta: 02h 40m 30s 769ms
+2022-04-26T00:51:51 | INFO | mmf.trainers.callbacks.logistics : progress: 12300/22000, train/hateful_memes/cross_entropy: 0.0007, train/hateful_memes/cross_entropy/avg: 0.1006, train/total_loss: 0.0007, train/total_loss/avg: 0.1006, max mem: 10794.0, experiment: run, epoch: 47, num_updates: 12300, iterations: 12300, max_updates: 22000, lr: 0., ups: 1.04, time: 01m 36s 020ms, time_since_start: 03h 30m 43s 479ms, eta: 02h 37m 52s 317ms
+2022-04-26T00:53:27 | INFO | mmf.trainers.callbacks.logistics : progress: 12400/22000, train/hateful_memes/cross_entropy: 0.0007, train/hateful_memes/cross_entropy/avg: 0.0998, train/total_loss: 0.0007, train/total_loss/avg: 0.0998, max mem: 10794.0, experiment: run, epoch: 47, num_updates: 12400, iterations: 12400, max_updates: 22000, lr: 0., ups: 1.04, time: 01m 36s 331ms, time_since_start: 03h 32m 19s 810ms, eta: 02h 36m 45s 069ms
+2022-04-26T00:55:03 | INFO | mmf.trainers.callbacks.logistics : progress: 12500/22000, train/hateful_memes/cross_entropy: 0.0007, train/hateful_memes/cross_entropy/avg: 0.0990, train/total_loss: 0.0007, train/total_loss/avg: 0.0990, max mem: 10794.0, experiment: run, epoch: 47, num_updates: 12500, iterations: 12500, max_updates: 22000, lr: 0., ups: 1.04, time: 01m 36s 223ms, time_since_start: 03h 33m 56s 034ms, eta: 02h 34m 56s 597ms
+2022-04-26T00:56:39 | INFO | mmf.trainers.callbacks.logistics : progress: 12600/22000, train/hateful_memes/cross_entropy: 0.0007, train/hateful_memes/cross_entropy/avg: 0.0983, train/total_loss: 0.0007, train/total_loss/avg: 0.0983, max mem: 10794.0, experiment: run, epoch: 48, num_updates: 12600, iterations: 12600, max_updates: 22000, lr: 0., ups: 1.04, time: 01m 36s 149ms, time_since_start: 03h 35m 32s 184ms, eta: 02h 33m 11s 744ms
+2022-04-26T00:58:15 | INFO | mmf.trainers.callbacks.logistics : progress: 12700/22000, train/hateful_memes/cross_entropy: 0.0007, train/hateful_memes/cross_entropy/avg: 0.0976, train/total_loss: 0.0007, train/total_loss/avg: 0.0976, max mem: 10794.0, experiment: run, epoch: 48, num_updates: 12700, iterations: 12700, max_updates: 22000, lr: 0., ups: 1.04, time: 01m 36s 113ms, time_since_start: 03h 37m 08s 297ms, eta: 02h 31m 30s 517ms
+2022-04-26T00:59:51 | INFO | mmf.trainers.callbacks.logistics : progress: 12800/22000, train/hateful_memes/cross_entropy: 0.0007, train/hateful_memes/cross_entropy/avg: 0.0968, train/total_loss: 0.0007, train/total_loss/avg: 0.0968, max mem: 10794.0, experiment: run, epoch: 49, num_updates: 12800, iterations: 12800, max_updates: 22000, lr: 0., ups: 1.05, time: 01m 35s 651ms, time_since_start: 03h 38m 43s 948ms, eta: 02h 29m 09s 511ms
+2022-04-26T01:01:27 | INFO | mmf.trainers.callbacks.logistics : progress: 12900/22000, train/hateful_memes/cross_entropy: 0.0007, train/hateful_memes/cross_entropy/avg: 0.0961, train/total_loss: 0.0007, train/total_loss/avg: 0.0961, max mem: 10794.0, experiment: run, epoch: 49, num_updates: 12900, iterations: 12900, max_updates: 22000, lr: 0., ups: 1.04, time: 01m 36s 196ms, time_since_start: 03h 40m 20s 145ms, eta: 02h 28m 22s 730ms
+2022-04-26T01:03:03 | INFO | mmf.trainers.callbacks.checkpoint : Checkpoint time. Saving a checkpoint.
+2022-04-26T01:03:03 | INFO | mmf.utils.checkpoint : Checkpoint save operation started!
+2022-04-26T01:03:15 | INFO | mmf.utils.checkpoint : Saving current checkpoint
+2022-04-26T01:03:29 | INFO | mmf.utils.checkpoint : Checkpoint save operation finished!
+2022-04-26T01:03:29 | INFO | mmf.trainers.callbacks.logistics : progress: 13000/22000, train/hateful_memes/cross_entropy: 0.0007, train/hateful_memes/cross_entropy/avg: 0.0953, train/total_loss: 0.0007, train/total_loss/avg: 0.0953, max mem: 10794.0, experiment: run, epoch: 49, num_updates: 13000, iterations: 13000, max_updates: 22000, lr: 0., ups: 0.83, time: 02m 01s 675ms, time_since_start: 03h 42m 21s 821ms, eta: 03h 05m 36s 968ms
+2022-04-26T01:03:29 | INFO | mmf.trainers.core.training_loop : Evaluation time. Running on full validation set...
+2022-04-26T01:03:29 | INFO | mmf.common.test_reporter : Predicting for hateful_memes
+2022-04-26T01:03:36 | INFO | mmf.trainers.core.evaluation_loop : Finished training. Loaded 17
+2022-04-26T01:03:36 | INFO | mmf.trainers.core.evaluation_loop :  -- skipped 0 batches.
+2022-04-26T01:03:36 | INFO | mmf.utils.checkpoint : Checkpoint save operation started!
+2022-04-26T01:03:49 | INFO | mmf.utils.checkpoint : Saving current checkpoint
+2022-04-26T01:04:02 | INFO | mmf.utils.checkpoint : Checkpoint save operation finished!
+2022-04-26T01:04:02 | INFO | mmf.trainers.callbacks.logistics : progress: 13000/22000, val/hateful_memes/cross_entropy: 2.3829, val/total_loss: 2.3829, val/hateful_memes/accuracy: 0.6833, val/hateful_memes/binary_f1: 0.4571, val/hateful_memes/roc_auc: 0.6970, num_updates: 13000, epoch: 49, iterations: 13000, max_updates: 22000, val_time: 32s 957ms, best_update: 9000, best_iteration: 9000, best_val/hateful_memes/roc_auc: 0.716680
+2022-04-26T01:05:40 | INFO | mmf.trainers.callbacks.logistics : progress: 13100/22000, train/hateful_memes/cross_entropy: 0.0007, train/hateful_memes/cross_entropy/avg: 0.0946, train/total_loss: 0.0007, train/total_loss/avg: 0.0946, max mem: 10794.0, experiment: run, epoch: 50, num_updates: 13100, iterations: 13100, max_updates: 22000, lr: 0., ups: 1.02, time: 01m 38s 357ms, time_since_start: 03h 44m 33s 136ms, eta: 02h 28m 22s 593ms
+2022-04-26T01:07:17 | INFO | mmf.trainers.callbacks.logistics : progress: 13200/22000, train/hateful_memes/cross_entropy: 0.0007, train/hateful_memes/cross_entropy/avg: 0.0939, train/total_loss: 0.0007, train/total_loss/avg: 0.0939, max mem: 10794.0, experiment: run, epoch: 50, num_updates: 13200, iterations: 13200, max_updates: 22000, lr: 0., ups: 1.04, time: 01m 36s 999ms, time_since_start: 03h 46m 10s 136ms, eta: 02h 24m 41s 044ms
+2022-04-26T01:08:53 | INFO | mmf.trainers.callbacks.logistics : progress: 13300/22000, train/hateful_memes/cross_entropy: 0.0007, train/hateful_memes/cross_entropy/avg: 0.0935, train/total_loss: 0.0007, train/total_loss/avg: 0.0935, max mem: 10794.0, experiment: run, epoch: 50, num_updates: 13300, iterations: 13300, max_updates: 22000, lr: 0., ups: 1.04, time: 01m 36s 090ms, time_since_start: 03h 47m 46s 226ms, eta: 02h 21m 41s 949ms
+2022-04-26T01:10:30 | INFO | mmf.trainers.callbacks.logistics : progress: 13400/22000, train/hateful_memes/cross_entropy: 0.0003, train/hateful_memes/cross_entropy/avg: 0.0928, train/total_loss: 0.0003, train/total_loss/avg: 0.0928, max mem: 10794.0, experiment: run, epoch: 51, num_updates: 13400, iterations: 13400, max_updates: 22000, lr: 0., ups: 1.04, time: 01m 36s 505ms, time_since_start: 03h 49m 22s 731ms, eta: 02h 20m 40s 578ms
+2022-04-26T01:12:06 | INFO | mmf.trainers.callbacks.logistics : progress: 13500/22000, train/hateful_memes/cross_entropy: 0.0003, train/hateful_memes/cross_entropy/avg: 0.0922, train/total_loss: 0.0003, train/total_loss/avg: 0.0922, max mem: 10794.0, experiment: run, epoch: 51, num_updates: 13500, iterations: 13500, max_updates: 22000, lr: 0., ups: 1.04, time: 01m 36s 412ms, time_since_start: 03h 50m 59s 144ms, eta: 02h 18m 54s 402ms
+2022-04-26T01:13:43 | INFO | mmf.trainers.callbacks.logistics : progress: 13600/22000, train/hateful_memes/cross_entropy: 0.0003, train/hateful_memes/cross_entropy/avg: 0.0915, train/total_loss: 0.0003, train/total_loss/avg: 0.0915, max mem: 10794.0, experiment: run, epoch: 52, num_updates: 13600, iterations: 13600, max_updates: 22000, lr: 0., ups: 1.04, time: 01m 36s 301ms, time_since_start: 03h 52m 35s 446ms, eta: 02h 17m 06s 855ms
+2022-04-26T01:15:19 | INFO | mmf.trainers.callbacks.logistics : progress: 13700/22000, train/hateful_memes/cross_entropy: 0.0003, train/hateful_memes/cross_entropy/avg: 0.0908, train/total_loss: 0.0003, train/total_loss/avg: 0.0908, max mem: 10794.0, experiment: run, epoch: 52, num_updates: 13700, iterations: 13700, max_updates: 22000, lr: 0., ups: 1.04, time: 01m 36s 352ms, time_since_start: 03h 54m 11s 799ms, eta: 02h 15m 33s 231ms
+2022-04-26T01:16:55 | INFO | mmf.trainers.callbacks.logistics : progress: 13800/22000, train/hateful_memes/cross_entropy: 0.0003, train/hateful_memes/cross_entropy/avg: 0.0902, train/total_loss: 0.0003, train/total_loss/avg: 0.0902, max mem: 10794.0, experiment: run, epoch: 52, num_updates: 13800, iterations: 13800, max_updates: 22000, lr: 0., ups: 1.04, time: 01m 36s 256ms, time_since_start: 03h 55m 48s 055ms, eta: 02h 13m 47s 189ms
+2022-04-26T01:18:31 | INFO | mmf.trainers.callbacks.logistics : progress: 13900/22000, train/hateful_memes/cross_entropy: 0.0003, train/hateful_memes/cross_entropy/avg: 0.0895, train/total_loss: 0.0003, train/total_loss/avg: 0.0895, max mem: 10794.0, experiment: run, epoch: 53, num_updates: 13900, iterations: 13900, max_updates: 22000, lr: 0., ups: 1.05, time: 01m 35s 605ms, time_since_start: 03h 57m 23s 660ms, eta: 02h 11m 15s 678ms
+2022-04-26T01:20:07 | INFO | mmf.trainers.callbacks.checkpoint : Checkpoint time. Saving a checkpoint.
+2022-04-26T01:20:07 | INFO | mmf.utils.checkpoint : Checkpoint save operation started!
+2022-04-26T01:20:19 | INFO | mmf.utils.checkpoint : Saving current checkpoint
+2022-04-26T01:20:31 | INFO | mmf.utils.checkpoint : Checkpoint save operation finished!
+2022-04-26T01:20:31 | INFO | mmf.trainers.callbacks.logistics : progress: 14000/22000, train/hateful_memes/cross_entropy: 0.0003, train/hateful_memes/cross_entropy/avg: 0.0889, train/total_loss: 0.0003, train/total_loss/avg: 0.0889, max mem: 10794.0, experiment: run, epoch: 53, num_updates: 14000, iterations: 14000, max_updates: 22000, lr: 0., ups: 0.83, time: 02m 522ms, time_since_start: 03h 59m 24s 183ms, eta: 02h 43m 25s 718ms
+2022-04-26T01:20:31 | INFO | mmf.trainers.core.training_loop : Evaluation time. Running on full validation set...
+2022-04-26T01:20:31 | INFO | mmf.common.test_reporter : Predicting for hateful_memes
+2022-04-26T01:20:38 | INFO | mmf.trainers.core.evaluation_loop : Finished training. Loaded 17
+2022-04-26T01:20:38 | INFO | mmf.trainers.core.evaluation_loop :  -- skipped 0 batches.
+2022-04-26T01:20:38 | INFO | mmf.utils.checkpoint : Checkpoint save operation started!
+2022-04-26T01:20:50 | INFO | mmf.utils.checkpoint : Saving current checkpoint
+2022-04-26T01:21:04 | INFO | mmf.utils.checkpoint : Checkpoint save operation finished!
+2022-04-26T01:21:04 | INFO | mmf.trainers.callbacks.logistics : progress: 14000/22000, val/hateful_memes/cross_entropy: 2.3820, val/total_loss: 2.3820, val/hateful_memes/accuracy: 0.7037, val/hateful_memes/binary_f1: 0.5062, val/hateful_memes/roc_auc: 0.7158, num_updates: 14000, epoch: 53, iterations: 14000, max_updates: 22000, val_time: 32s 631ms, best_update: 9000, best_iteration: 9000, best_val/hateful_memes/roc_auc: 0.716680
+2022-04-26T01:22:43 | INFO | mmf.trainers.callbacks.logistics : progress: 14100/22000, train/hateful_memes/cross_entropy: 0.0002, train/hateful_memes/cross_entropy/avg: 0.0883, train/total_loss: 0.0002, train/total_loss/avg: 0.0883, max mem: 10794.0, experiment: run, epoch: 54, num_updates: 14100, iterations: 14100, max_updates: 22000, lr: 0., ups: 1.02, time: 01m 38s 717ms, time_since_start: 04h 01m 35s 538ms, eta: 02h 12m 11s 278ms
+2022-04-26T01:24:19 | INFO | mmf.trainers.callbacks.logistics : progress: 14200/22000, train/hateful_memes/cross_entropy: 0.0002, train/hateful_memes/cross_entropy/avg: 0.0876, train/total_loss: 0.0002, train/total_loss/avg: 0.0876, max mem: 10794.0, experiment: run, epoch: 54, num_updates: 14200, iterations: 14200, max_updates: 22000, lr: 0., ups: 1.04, time: 01m 36s 851ms, time_since_start: 04h 03m 12s 389ms, eta: 02h 08m 02s 824ms
+2022-04-26T01:25:56 | INFO | mmf.trainers.callbacks.logistics : progress: 14300/22000, train/hateful_memes/cross_entropy: 0.0003, train/hateful_memes/cross_entropy/avg: 0.0871, train/total_loss: 0.0003, train/total_loss/avg: 0.0871, max mem: 10794.0, experiment: run, epoch: 54, num_updates: 14300, iterations: 14300, max_updates: 22000, lr: 0., ups: 1.04, time: 01m 36s 631ms, time_since_start: 04h 04m 49s 021ms, eta: 02h 06m 07s 123ms
+2022-04-26T01:27:32 | INFO | mmf.trainers.callbacks.logistics : progress: 14400/22000, train/hateful_memes/cross_entropy: 0.0003, train/hateful_memes/cross_entropy/avg: 0.0865, train/total_loss: 0.0003, train/total_loss/avg: 0.0865, max mem: 10794.0, experiment: run, epoch: 55, num_updates: 14400, iterations: 14400, max_updates: 22000, lr: 0., ups: 1.05, time: 01m 35s 925ms, time_since_start: 04h 06m 24s 946ms, eta: 02h 03m 34s 239ms
+2022-04-26T01:29:08 | INFO | mmf.trainers.callbacks.logistics : progress: 14500/22000, train/hateful_memes/cross_entropy: 0.0003, train/hateful_memes/cross_entropy/avg: 0.0859, train/total_loss: 0.0003, train/total_loss/avg: 0.0859, max mem: 10794.0, experiment: run, epoch: 55, num_updates: 14500, iterations: 14500, max_updates: 22000, lr: 0., ups: 1.04, time: 01m 36s 330ms, time_since_start: 04h 08m 01s 276ms, eta: 02h 02m 27s 591ms
+2022-04-26T01:30:45 | INFO | mmf.trainers.callbacks.logistics : progress: 14600/22000, train/hateful_memes/cross_entropy: 0.0003, train/hateful_memes/cross_entropy/avg: 0.0853, train/total_loss: 0.0003, train/total_loss/avg: 0.0853, max mem: 10794.0, experiment: run, epoch: 55, num_updates: 14600, iterations: 14600, max_updates: 22000, lr: 0., ups: 1.04, time: 01m 36s 329ms, time_since_start: 04h 09m 37s 606ms, eta: 02h 49s 556ms
+2022-04-26T01:32:21 | INFO | mmf.trainers.callbacks.logistics : progress: 14700/22000, train/hateful_memes/cross_entropy: 0.0003, train/hateful_memes/cross_entropy/avg: 0.0847, train/total_loss: 0.0003, train/total_loss/avg: 0.0847, max mem: 10794.0, experiment: run, epoch: 56, num_updates: 14700, iterations: 14700, max_updates: 22000, lr: 0., ups: 1.04, time: 01m 36s 127ms, time_since_start: 04h 11m 13s 733ms, eta: 01h 58m 56s 573ms
+2022-04-26T01:33:57 | INFO | mmf.trainers.callbacks.logistics : progress: 14800/22000, train/hateful_memes/cross_entropy: 0.0003, train/hateful_memes/cross_entropy/avg: 0.0842, train/total_loss: 0.0003, train/total_loss/avg: 0.0842, max mem: 10794.0, experiment: run, epoch: 56, num_updates: 14800, iterations: 14800, max_updates: 22000, lr: 0., ups: 1.04, time: 01m 36s 193ms, time_since_start: 04h 12m 49s 926ms, eta: 01h 57m 23s 648ms
+2022-04-26T01:35:33 | INFO | mmf.trainers.callbacks.logistics : progress: 14900/22000, train/hateful_memes/cross_entropy: 0.0003, train/hateful_memes/cross_entropy/avg: 0.0836, train/total_loss: 0.0003, train/total_loss/avg: 0.0836, max mem: 10794.0, experiment: run, epoch: 57, num_updates: 14900, iterations: 14900, max_updates: 22000, lr: 0., ups: 1.05, time: 01m 35s 670ms, time_since_start: 04h 14m 25s 596ms, eta: 01h 55m 08s 062ms
+2022-04-26T01:37:09 | INFO | mmf.trainers.callbacks.checkpoint : Checkpoint time. Saving a checkpoint.
+2022-04-26T01:37:09 | INFO | mmf.utils.checkpoint : Checkpoint save operation started!
+2022-04-26T01:37:21 | INFO | mmf.utils.checkpoint : Saving current checkpoint
+2022-04-26T01:37:33 | INFO | mmf.utils.checkpoint : Checkpoint save operation finished!
+2022-04-26T01:37:33 | INFO | mmf.trainers.callbacks.logistics : progress: 15000/22000, train/hateful_memes/cross_entropy: 0.0003, train/hateful_memes/cross_entropy/avg: 0.0830, train/total_loss: 0.0003, train/total_loss/avg: 0.0830, max mem: 10794.0, experiment: run, epoch: 57, num_updates: 15000, iterations: 15000, max_updates: 22000, lr: 0., ups: 0.83, time: 02m 544ms, time_since_start: 04h 16m 26s 141ms, eta: 02h 23m 01s 591ms
+2022-04-26T01:37:33 | INFO | mmf.trainers.core.training_loop : Evaluation time. Running on full validation set...
+2022-04-26T01:37:33 | INFO | mmf.common.test_reporter : Predicting for hateful_memes
+2022-04-26T01:37:41 | INFO | mmf.trainers.core.evaluation_loop : Finished training. Loaded 17
+2022-04-26T01:37:41 | INFO | mmf.trainers.core.evaluation_loop :  -- skipped 0 batches.
+2022-04-26T01:37:41 | INFO | mmf.utils.checkpoint : Checkpoint save operation started!
+2022-04-26T01:37:54 | INFO | mmf.utils.checkpoint : Saving current checkpoint
+2022-04-26T01:38:07 | INFO | mmf.utils.checkpoint : Checkpoint save operation finished!
+2022-04-26T01:38:07 | INFO | mmf.trainers.callbacks.logistics : progress: 15000/22000, val/hateful_memes/cross_entropy: 2.8791, val/total_loss: 2.8791, val/hateful_memes/accuracy: 0.6944, val/hateful_memes/binary_f1: 0.4330, val/hateful_memes/roc_auc: 0.7012, num_updates: 15000, epoch: 57, iterations: 15000, max_updates: 22000, val_time: 33s 988ms, best_update: 9000, best_iteration: 9000, best_val/hateful_memes/roc_auc: 0.716680
+2022-04-26T01:39:46 | INFO | mmf.trainers.callbacks.logistics : progress: 15100/22000, train/hateful_memes/cross_entropy: 0.0002, train/hateful_memes/cross_entropy/avg: 0.0825, train/total_loss: 0.0002, train/total_loss/avg: 0.0825, max mem: 10794.0, experiment: run, epoch: 57, num_updates: 15100, iterations: 15100, max_updates: 22000, lr: 0., ups: 1.02, time: 01m 38s 340ms, time_since_start: 04h 18m 38s 471ms, eta: 01h 55m 822ms
+2022-04-26T01:41:22 | INFO | mmf.trainers.callbacks.logistics : progress: 15200/22000, train/hateful_memes/cross_entropy: 0.0002, train/hateful_memes/cross_entropy/avg: 0.0820, train/total_loss: 0.0002, train/total_loss/avg: 0.0820, max mem: 10794.0, experiment: run, epoch: 58, num_updates: 15200, iterations: 15200, max_updates: 22000, lr: 0., ups: 1.04, time: 01m 36s 677ms, time_since_start: 04h 20m 15s 149ms, eta: 01h 51m 25s 862ms
+2022-04-26T01:42:59 | INFO | mmf.trainers.callbacks.logistics : progress: 15300/22000, train/hateful_memes/cross_entropy: 0.0001, train/hateful_memes/cross_entropy/avg: 0.0814, train/total_loss: 0.0001, train/total_loss/avg: 0.0814, max mem: 10794.0, experiment: run, epoch: 58, num_updates: 15300, iterations: 15300, max_updates: 22000, lr: 0., ups: 1.04, time: 01m 36s 954ms, time_since_start: 04h 21m 52s 104ms, eta: 01h 50m 06s 400ms
+2022-04-26T01:44:36 | INFO | mmf.trainers.callbacks.logistics : progress: 15400/22000, train/hateful_memes/cross_entropy: 0.0002, train/hateful_memes/cross_entropy/avg: 0.0809, train/total_loss: 0.0002, train/total_loss/avg: 0.0809, max mem: 10794.0, experiment: run, epoch: 58, num_updates: 15400, iterations: 15400, max_updates: 22000, lr: 0., ups: 1.04, time: 01m 36s 904ms, time_since_start: 04h 23m 29s 008ms, eta: 01h 48m 24s 404ms
+2022-04-26T01:46:12 | INFO | mmf.trainers.callbacks.logistics : progress: 15500/22000, train/hateful_memes/cross_entropy: 0.0002, train/hateful_memes/cross_entropy/avg: 0.0805, train/total_loss: 0.0002, train/total_loss/avg: 0.0805, max mem: 10794.0, experiment: run, epoch: 59, num_updates: 15500, iterations: 15500, max_updates: 22000, lr: 0., ups: 1.04, time: 01m 36s 253ms, time_since_start: 04h 25m 05s 262ms, eta: 01h 46m 02s 843ms
+2022-04-26T01:47:49 | INFO | mmf.trainers.callbacks.logistics : progress: 15600/22000, train/hateful_memes/cross_entropy: 0.0002, train/hateful_memes/cross_entropy/avg: 0.0800, train/total_loss: 0.0002, train/total_loss/avg: 0.0800, max mem: 10794.0, experiment: run, epoch: 59, num_updates: 15600, iterations: 15600, max_updates: 22000, lr: 0., ups: 1.04, time: 01m 36s 514ms, time_since_start: 04h 26m 41s 776ms, eta: 01h 44m 41s 930ms
+2022-04-26T01:49:25 | INFO | mmf.trainers.callbacks.logistics : progress: 15700/22000, train/hateful_memes/cross_entropy: 0.0002, train/hateful_memes/cross_entropy/avg: 0.0795, train/total_loss: 0.0002, train/total_loss/avg: 0.0795, max mem: 10794.0, experiment: run, epoch: 60, num_updates: 15700, iterations: 15700, max_updates: 22000, lr: 0., ups: 1.04, time: 01m 36s 281ms, time_since_start: 04h 28m 18s 058ms, eta: 01h 42m 48s 867ms
+2022-04-26T01:51:02 | INFO | mmf.trainers.callbacks.logistics : progress: 15800/22000, train/hateful_memes/cross_entropy: 0.0002, train/hateful_memes/cross_entropy/avg: 0.0790, train/total_loss: 0.0002, train/total_loss/avg: 0.0790, max mem: 10794.0, experiment: run, epoch: 60, num_updates: 15800, iterations: 15800, max_updates: 22000, lr: 0., ups: 1.04, time: 01m 36s 762ms, time_since_start: 04h 29m 54s 820ms, eta: 01h 41m 41s 244ms
+2022-04-26T01:52:39 | INFO | mmf.trainers.callbacks.logistics : progress: 15900/22000, train/hateful_memes/cross_entropy: 0.0001, train/hateful_memes/cross_entropy/avg: 0.0785, train/total_loss: 0.0001, train/total_loss/avg: 0.0785, max mem: 10794.0, experiment: run, epoch: 60, num_updates: 15900, iterations: 15900, max_updates: 22000, lr: 0., ups: 1.04, time: 01m 36s 697ms, time_since_start: 04h 31m 31s 518ms, eta: 01h 39m 58s 853ms
+2022-04-26T01:54:15 | INFO | mmf.trainers.callbacks.checkpoint : Checkpoint time. Saving a checkpoint.
+2022-04-26T01:54:15 | INFO | mmf.utils.checkpoint : Checkpoint save operation started!
+2022-04-26T01:54:27 | INFO | mmf.utils.checkpoint : Saving current checkpoint
+2022-04-26T01:54:40 | INFO | mmf.utils.checkpoint : Checkpoint save operation finished!
+2022-04-26T01:54:40 | INFO | mmf.trainers.callbacks.logistics : progress: 16000/22000, train/hateful_memes/cross_entropy: 0.0001, train/hateful_memes/cross_entropy/avg: 0.0780, train/total_loss: 0.0001, train/total_loss/avg: 0.0780, max mem: 10794.0, experiment: run, epoch: 61, num_updates: 16000, iterations: 16000, max_updates: 22000, lr: 0., ups: 0.83, time: 02m 01s 527ms, time_since_start: 04h 33m 33s 046ms, eta: 02h 03m 35s 625ms
+2022-04-26T01:54:40 | INFO | mmf.trainers.core.training_loop : Evaluation time. Running on full validation set...
+2022-04-26T01:54:40 | INFO | mmf.common.test_reporter : Predicting for hateful_memes
+2022-04-26T01:54:47 | INFO | mmf.trainers.core.evaluation_loop : Finished training. Loaded 17
+2022-04-26T01:54:47 | INFO | mmf.trainers.core.evaluation_loop :  -- skipped 0 batches.
+2022-04-26T01:54:47 | INFO | mmf.utils.checkpoint : Checkpoint save operation started!
+2022-04-26T01:55:00 | INFO | mmf.utils.checkpoint : Saving current checkpoint
+2022-04-26T01:55:13 | INFO | mmf.utils.checkpoint : Checkpoint save operation finished!
+2022-04-26T01:55:13 | INFO | mmf.trainers.callbacks.logistics : progress: 16000/22000, val/hateful_memes/cross_entropy: 2.6106, val/total_loss: 2.6106, val/hateful_memes/accuracy: 0.6833, val/hateful_memes/binary_f1: 0.4639, val/hateful_memes/roc_auc: 0.7090, num_updates: 16000, epoch: 61, iterations: 16000, max_updates: 22000, val_time: 32s 533ms, best_update: 9000, best_iteration: 9000, best_val/hateful_memes/roc_auc: 0.716680
+2022-04-26T01:56:52 | INFO | mmf.trainers.callbacks.logistics : progress: 16100/22000, train/hateful_memes/cross_entropy: 0.0001, train/hateful_memes/cross_entropy/avg: 0.0775, train/total_loss: 0.0001, train/total_loss/avg: 0.0775, max mem: 10794.0, experiment: run, epoch: 61, num_updates: 16100, iterations: 16100, max_updates: 22000, lr: 0., ups: 1.02, time: 01m 38s 974ms, time_since_start: 04h 35m 44s 556ms, eta: 01h 38m 58s 761ms
+2022-04-26T01:58:29 | INFO | mmf.trainers.callbacks.logistics : progress: 16200/22000, train/hateful_memes/cross_entropy: 0.0001, train/hateful_memes/cross_entropy/avg: 0.0770, train/total_loss: 0.0001, train/total_loss/avg: 0.0770, max mem: 10794.0, experiment: run, epoch: 61, num_updates: 16200, iterations: 16200, max_updates: 22000, lr: 0., ups: 1.03, time: 01m 37s 624ms, time_since_start: 04h 37m 22s 180ms, eta: 01h 35m 58s 450ms
+2022-04-26T02:00:06 | INFO | mmf.trainers.callbacks.logistics : progress: 16300/22000, train/hateful_memes/cross_entropy: 0.0001, train/hateful_memes/cross_entropy/avg: 0.0766, train/total_loss: 0.0001, train/total_loss/avg: 0.0766, max mem: 10794.0, experiment: run, epoch: 62, num_updates: 16300, iterations: 16300, max_updates: 22000, lr: 0., ups: 1.04, time: 01m 36s 588ms, time_since_start: 04h 38m 58s 769ms, eta: 01h 33m 19s 154ms
+2022-04-26T02:01:43 | INFO | mmf.trainers.callbacks.logistics : progress: 16400/22000, train/hateful_memes/cross_entropy: 0.0001, train/hateful_memes/cross_entropy/avg: 0.0761, train/total_loss: 0.0001, train/total_loss/avg: 0.0761, max mem: 10794.0, experiment: run, epoch: 62, num_updates: 16400, iterations: 16400, max_updates: 22000, lr: 0., ups: 1.04, time: 01m 36s 777ms, time_since_start: 04h 40m 35s 546ms, eta: 01h 31m 51s 652ms
+2022-04-26T02:03:19 | INFO | mmf.trainers.callbacks.logistics : progress: 16500/22000, train/hateful_memes/cross_entropy: 0.0001, train/hateful_memes/cross_entropy/avg: 0.0756, train/total_loss: 0.0001, train/total_loss/avg: 0.0756, max mem: 10794.0, experiment: run, epoch: 63, num_updates: 16500, iterations: 16500, max_updates: 22000, lr: 0., ups: 1.04, time: 01m 36s 205ms, time_since_start: 04h 42m 11s 751ms, eta: 01h 29m 41s 241ms
+2022-04-26T02:04:55 | INFO | mmf.trainers.callbacks.logistics : progress: 16600/22000, train/hateful_memes/cross_entropy: 0.0001, train/hateful_memes/cross_entropy/avg: 0.0752, train/total_loss: 0.0001, train/total_loss/avg: 0.0752, max mem: 10794.0, experiment: run, epoch: 63, num_updates: 16600, iterations: 16600, max_updates: 22000, lr: 0., ups: 1.04, time: 01m 36s 416ms, time_since_start: 04h 43m 48s 168ms, eta: 01h 28m 14s 993ms
+2022-04-26T02:06:32 | INFO | mmf.trainers.callbacks.logistics : progress: 16700/22000, train/hateful_memes/cross_entropy: 0.0001, train/hateful_memes/cross_entropy/avg: 0.0747, train/total_loss: 0.0001, train/total_loss/avg: 0.0747, max mem: 10794.0, experiment: run, epoch: 63, num_updates: 16700, iterations: 16700, max_updates: 22000, lr: 0., ups: 1.04, time: 01m 36s 442ms, time_since_start: 04h 45m 24s 610ms, eta: 01h 26m 38s 350ms
+2022-04-26T02:08:08 | INFO | mmf.trainers.callbacks.logistics : progress: 16800/22000, train/hateful_memes/cross_entropy: 0.0001, train/hateful_memes/cross_entropy/avg: 0.0743, train/total_loss: 0.0001, train/total_loss/avg: 0.0743, max mem: 10794.0, experiment: run, epoch: 64, num_updates: 16800, iterations: 16800, max_updates: 22000, lr: 0., ups: 1.04, time: 01m 36s 165ms, time_since_start: 04h 47m 775ms, eta: 01h 24m 45s 602ms
+2022-04-26T02:09:44 | INFO | mmf.trainers.callbacks.logistics : progress: 16900/22000, train/hateful_memes/cross_entropy: 0.0001, train/hateful_memes/cross_entropy/avg: 0.0738, train/total_loss: 0.0001, train/total_loss/avg: 0.0738, max mem: 10794.0, experiment: run, epoch: 64, num_updates: 16900, iterations: 16900, max_updates: 22000, lr: 0., ups: 1.04, time: 01m 36s 434ms, time_since_start: 04h 48m 37s 210ms, eta: 01h 23m 21s 748ms
+2022-04-26T02:11:21 | INFO | mmf.trainers.callbacks.checkpoint : Checkpoint time. Saving a checkpoint.
+2022-04-26T02:11:21 | INFO | mmf.utils.checkpoint : Checkpoint save operation started!
+2022-04-26T02:11:32 | INFO | mmf.utils.checkpoint : Saving current checkpoint
+2022-04-26T02:11:46 | INFO | mmf.utils.checkpoint : Checkpoint save operation finished!
+2022-04-26T02:11:46 | INFO | mmf.trainers.callbacks.logistics : progress: 17000/22000, train/hateful_memes/cross_entropy: 0.0001, train/hateful_memes/cross_entropy/avg: 0.0734, train/total_loss: 0.0001, train/total_loss/avg: 0.0734, max mem: 10794.0, experiment: run, epoch: 64, num_updates: 17000, iterations: 17000, max_updates: 22000, lr: 0., ups: 0.83, time: 02m 01s 905ms, time_since_start: 04h 50m 39s 115ms, eta: 01h 43m 18s 912ms
+2022-04-26T02:11:46 | INFO | mmf.trainers.core.training_loop : Evaluation time. Running on full validation set...
+2022-04-26T02:11:46 | INFO | mmf.common.test_reporter : Predicting for hateful_memes
+2022-04-26T02:11:53 | INFO | mmf.trainers.core.evaluation_loop : Finished training. Loaded 17
+2022-04-26T02:11:53 | INFO | mmf.trainers.core.evaluation_loop :  -- skipped 0 batches.
+2022-04-26T02:11:53 | INFO | mmf.utils.checkpoint : Checkpoint save operation started!
+2022-04-26T02:12:07 | INFO | mmf.utils.checkpoint : Saving current checkpoint
+2022-04-26T02:12:19 | INFO | mmf.utils.checkpoint : Checkpoint save operation finished!
+2022-04-26T02:12:19 | INFO | mmf.trainers.callbacks.logistics : progress: 17000/22000, val/hateful_memes/cross_entropy: 2.9179, val/total_loss: 2.9179, val/hateful_memes/accuracy: 0.6796, val/hateful_memes/binary_f1: 0.4175, val/hateful_memes/roc_auc: 0.7067, num_updates: 17000, epoch: 64, iterations: 17000, max_updates: 22000, val_time: 32s 778ms, best_update: 9000, best_iteration: 9000, best_val/hateful_memes/roc_auc: 0.716680
+2022-04-26T02:13:57 | INFO | mmf.trainers.callbacks.logistics : progress: 17100/22000, train/hateful_memes/cross_entropy: 0.0001, train/hateful_memes/cross_entropy/avg: 0.0730, train/total_loss: 0.0001, train/total_loss/avg: 0.0730, max mem: 10794.0, experiment: run, epoch: 65, num_updates: 17100, iterations: 17100, max_updates: 22000, lr: 0., ups: 1.02, time: 01m 38s 496ms, time_since_start: 04h 52m 50s 392ms, eta: 01h 21m 48s 372ms
+2022-04-26T02:15:34 | INFO | mmf.trainers.callbacks.logistics : progress: 17200/22000, train/hateful_memes/cross_entropy: 0.0001, train/hateful_memes/cross_entropy/avg: 0.0726, train/total_loss: 0.0001, train/total_loss/avg: 0.0726, max mem: 10794.0, experiment: run, epoch: 65, num_updates: 17200, iterations: 17200, max_updates: 22000, lr: 0., ups: 1.03, time: 01m 37s 012ms, time_since_start: 04h 54m 27s 404ms, eta: 01h 18m 55s 750ms
+2022-04-26T02:17:11 | INFO | mmf.trainers.callbacks.logistics : progress: 17300/22000, train/hateful_memes/cross_entropy: 0.0001, train/hateful_memes/cross_entropy/avg: 0.0723, train/total_loss: 0.0001, train/total_loss/avg: 0.0723, max mem: 10794.0, experiment: run, epoch: 66, num_updates: 17300, iterations: 17300, max_updates: 22000, lr: 0., ups: 1.04, time: 01m 36s 769ms, time_since_start: 04h 56m 04s 174ms, eta: 01h 17m 05s 492ms
+2022-04-26T02:18:48 | INFO | mmf.trainers.callbacks.logistics : progress: 17400/22000, train/hateful_memes/cross_entropy: 0.0001, train/hateful_memes/cross_entropy/avg: 0.0718, train/total_loss: 0.0001, train/total_loss/avg: 0.0718, max mem: 10794.0, experiment: run, epoch: 66, num_updates: 17400, iterations: 17400, max_updates: 22000, lr: 0., ups: 1.04, time: 01m 36s 649ms, time_since_start: 04h 57m 40s 823ms, eta: 01h 15m 21s 436ms
+2022-04-26T02:20:25 | INFO | mmf.trainers.callbacks.logistics : progress: 17500/22000, train/hateful_memes/cross_entropy: 0.0001, train/hateful_memes/cross_entropy/avg: 0.0714, train/total_loss: 0.0001, train/total_loss/avg: 0.0714, max mem: 10794.0, experiment: run, epoch: 66, num_updates: 17500, iterations: 17500, max_updates: 22000, lr: 0., ups: 1.04, time: 01m 36s 837ms, time_since_start: 04h 59m 17s 660ms, eta: 01h 13m 51s 774ms
+2022-04-26T02:22:01 | INFO | mmf.trainers.callbacks.logistics : progress: 17600/22000, train/hateful_memes/cross_entropy: 0.0001, train/hateful_memes/cross_entropy/avg: 0.0710, train/total_loss: 0.0001, train/total_loss/avg: 0.0710, max mem: 10794.0, experiment: run, epoch: 67, num_updates: 17600, iterations: 17600, max_updates: 22000, lr: 0., ups: 1.04, time: 01m 36s 173ms, time_since_start: 05h 53s 833ms, eta: 01h 11m 43s 555ms
+2022-04-26T02:23:38 | INFO | mmf.trainers.callbacks.logistics : progress: 17700/22000, train/hateful_memes/cross_entropy: 0.0001, train/hateful_memes/cross_entropy/avg: 0.0706, train/total_loss: 0.0001, train/total_loss/avg: 0.0706, max mem: 10794.0, experiment: run, epoch: 67, num_updates: 17700, iterations: 17700, max_updates: 22000, lr: 0., ups: 1.04, time: 01m 36s 626ms, time_since_start: 05h 02m 30s 460ms, eta: 01h 10m 25s 592ms
+2022-04-26T02:25:14 | INFO | mmf.trainers.callbacks.logistics : progress: 17800/22000, train/hateful_memes/cross_entropy: 0.0001, train/hateful_memes/cross_entropy/avg: 0.0702, train/total_loss: 0.0001, train/total_loss/avg: 0.0702, max mem: 10794.0, experiment: run, epoch: 67, num_updates: 17800, iterations: 17800, max_updates: 22000, lr: 0., ups: 1.04, time: 01m 36s 614ms, time_since_start: 05h 04m 07s 075ms, eta: 01h 08m 46s 808ms
+2022-04-26T02:26:51 | INFO | mmf.trainers.callbacks.logistics : progress: 17900/22000, train/hateful_memes/cross_entropy: 0.0001, train/hateful_memes/cross_entropy/avg: 0.0698, train/total_loss: 0.0001, train/total_loss/avg: 0.0698, max mem: 10794.0, experiment: run, epoch: 68, num_updates: 17900, iterations: 17900, max_updates: 22000, lr: 0., ups: 1.04, time: 01m 36s 349ms, time_since_start: 05h 05m 43s 425ms, eta: 01h 06m 57s 485ms
+2022-04-26T02:28:27 | INFO | mmf.trainers.callbacks.checkpoint : Checkpoint time. Saving a checkpoint.
+2022-04-26T02:28:27 | INFO | mmf.utils.checkpoint : Checkpoint save operation started!
+2022-04-26T02:28:39 | INFO | mmf.utils.checkpoint : Saving current checkpoint
+2022-04-26T02:28:52 | INFO | mmf.utils.checkpoint : Checkpoint save operation finished!
+2022-04-26T02:28:52 | INFO | mmf.trainers.callbacks.logistics : progress: 18000/22000, train/hateful_memes/cross_entropy: 0.0001, train/hateful_memes/cross_entropy/avg: 0.0695, train/total_loss: 0.0001, train/total_loss/avg: 0.0695, max mem: 10794.0, experiment: run, epoch: 68, num_updates: 18000, iterations: 18000, max_updates: 22000, lr: 0., ups: 0.83, time: 02m 01s 059ms, time_since_start: 05h 07m 44s 485ms, eta: 01h 22m 04s 720ms
+2022-04-26T02:28:52 | INFO | mmf.trainers.core.training_loop : Evaluation time. Running on full validation set...
+2022-04-26T02:28:52 | INFO | mmf.common.test_reporter : Predicting for hateful_memes
+2022-04-26T02:28:58 | INFO | mmf.trainers.core.evaluation_loop : Finished training. Loaded 17
+2022-04-26T02:28:58 | INFO | mmf.trainers.core.evaluation_loop :  -- skipped 0 batches.
+2022-04-26T02:28:58 | INFO | mmf.utils.checkpoint : Checkpoint save operation started!
+2022-04-26T02:29:12 | INFO | mmf.utils.checkpoint : Saving current checkpoint
+2022-04-26T02:29:25 | INFO | mmf.utils.checkpoint : Checkpoint save operation finished!
+2022-04-26T02:29:25 | INFO | mmf.trainers.callbacks.logistics : progress: 18000/22000, val/hateful_memes/cross_entropy: 2.8892, val/total_loss: 2.8892, val/hateful_memes/accuracy: 0.6741, val/hateful_memes/binary_f1: 0.4094, val/hateful_memes/roc_auc: 0.7138, num_updates: 18000, epoch: 68, iterations: 18000, max_updates: 22000, val_time: 33s 103ms, best_update: 9000, best_iteration: 9000, best_val/hateful_memes/roc_auc: 0.716680
+2022-04-26T02:31:03 | INFO | mmf.trainers.callbacks.logistics : progress: 18100/22000, train/hateful_memes/cross_entropy: 0.0001, train/hateful_memes/cross_entropy/avg: 0.0691, train/total_loss: 0.0001, train/total_loss/avg: 0.0691, max mem: 10794.0, experiment: run, epoch: 69, num_updates: 18100, iterations: 18100, max_updates: 22000, lr: 0., ups: 1.02, time: 01m 38s 557ms, time_since_start: 05h 09m 56s 148ms, eta: 01h 05m 09s 104ms
+2022-04-26T02:32:41 | INFO | mmf.trainers.callbacks.logistics : progress: 18200/22000, train/hateful_memes/cross_entropy: 0.0001, train/hateful_memes/cross_entropy/avg: 0.0687, train/total_loss: 0.0001, train/total_loss/avg: 0.0687, max mem: 10794.0, experiment: run, epoch: 69, num_updates: 18200, iterations: 18200, max_updates: 22000, lr: 0., ups: 1.03, time: 01m 37s 401ms, time_since_start: 05h 11m 33s 549ms, eta: 01h 02m 44s 168ms
+2022-04-26T02:34:18 | INFO | mmf.trainers.callbacks.logistics : progress: 18300/22000, train/hateful_memes/cross_entropy: 0.0000, train/hateful_memes/cross_entropy/avg: 0.0683, train/total_loss: 0.0000, train/total_loss/avg: 0.0683, max mem: 10794.0, experiment: run, epoch: 69, num_updates: 18300, iterations: 18300, max_updates: 22000, lr: 0., ups: 1.03, time: 01m 37s 031ms, time_since_start: 05h 13m 10s 580ms, eta: 01h 51s 201ms
+2022-04-26T02:35:54 | INFO | mmf.trainers.callbacks.logistics : progress: 18400/22000, train/hateful_memes/cross_entropy: 0.0000, train/hateful_memes/cross_entropy/avg: 0.0679, train/total_loss: 0.0000, train/total_loss/avg: 0.0679, max mem: 10794.0, experiment: run, epoch: 70, num_updates: 18400, iterations: 18400, max_updates: 22000, lr: 0., ups: 1.04, time: 01m 36s 586ms, time_since_start: 05h 14m 47s 167ms, eta: 58m 56s 220ms
+2022-04-26T02:37:31 | INFO | mmf.trainers.callbacks.logistics : progress: 18500/22000, train/hateful_memes/cross_entropy: 0.0000, train/hateful_memes/cross_entropy/avg: 0.0676, train/total_loss: 0.0000, train/total_loss/avg: 0.0676, max mem: 10794.0, experiment: run, epoch: 70, num_updates: 18500, iterations: 18500, max_updates: 22000, lr: 0., ups: 1.04, time: 01m 36s 756ms, time_since_start: 05h 16m 23s 924ms, eta: 57m 24s 065ms
+2022-04-26T02:39:08 | INFO | mmf.trainers.callbacks.logistics : progress: 18600/22000, train/hateful_memes/cross_entropy: 0.0000, train/hateful_memes/cross_entropy/avg: 0.0672, train/total_loss: 0.0000, train/total_loss/avg: 0.0672, max mem: 10794.0, experiment: run, epoch: 70, num_updates: 18600, iterations: 18600, max_updates: 22000, lr: 0., ups: 1.04, time: 01m 36s 695ms, time_since_start: 05h 18m 620ms, eta: 55m 43s 543ms
+2022-04-26T02:40:44 | INFO | mmf.trainers.callbacks.logistics : progress: 18700/22000, train/hateful_memes/cross_entropy: 0.0000, train/hateful_memes/cross_entropy/avg: 0.0668, train/total_loss: 0.0000, train/total_loss/avg: 0.0668, max mem: 10794.0, experiment: run, epoch: 71, num_updates: 18700, iterations: 18700, max_updates: 22000, lr: 0., ups: 1.04, time: 01m 36s 279ms, time_since_start: 05h 19m 36s 899ms, eta: 53m 51s 239ms
+2022-04-26T02:42:21 | INFO | mmf.trainers.callbacks.logistics : progress: 18800/22000, train/hateful_memes/cross_entropy: 0.0000, train/hateful_memes/cross_entropy/avg: 0.0665, train/total_loss: 0.0000, train/total_loss/avg: 0.0665, max mem: 10794.0, experiment: run, epoch: 71, num_updates: 18800, iterations: 18800, max_updates: 22000, lr: 0., ups: 1.04, time: 01m 36s 773ms, time_since_start: 05h 21m 13s 672ms, eta: 52m 29s 382ms
+2022-04-26T02:43:57 | INFO | mmf.trainers.callbacks.logistics : progress: 18900/22000, train/hateful_memes/cross_entropy: 0.0000, train/hateful_memes/cross_entropy/avg: 0.0661, train/total_loss: 0.0000, train/total_loss/avg: 0.0661, max mem: 10794.0, experiment: run, epoch: 72, num_updates: 18900, iterations: 18900, max_updates: 22000, lr: 0., ups: 1.04, time: 01m 36s 635ms, time_since_start: 05h 22m 50s 308ms, eta: 50m 46s 624ms
+2022-04-26T02:45:34 | INFO | mmf.trainers.callbacks.checkpoint : Checkpoint time. Saving a checkpoint.
+2022-04-26T02:45:34 | INFO | mmf.utils.checkpoint : Checkpoint save operation started!
+2022-04-26T02:45:47 | INFO | mmf.utils.checkpoint : Saving current checkpoint
+2022-04-26T02:46:00 | INFO | mmf.utils.checkpoint : Checkpoint save operation finished!
+2022-04-26T02:46:00 | INFO | mmf.trainers.callbacks.logistics : progress: 19000/22000, train/hateful_memes/cross_entropy: 0.0000, train/hateful_memes/cross_entropy/avg: 0.0658, train/total_loss: 0.0000, train/total_loss/avg: 0.0658, max mem: 10794.0, experiment: run, epoch: 72, num_updates: 19000, iterations: 19000, max_updates: 22000, lr: 0., ups: 0.82, time: 02m 02s 126ms, time_since_start: 05h 24m 52s 434ms, eta: 01h 02m 06s 076ms
+2022-04-26T02:46:00 | INFO | mmf.trainers.core.training_loop : Evaluation time. Running on full validation set...
+2022-04-26T02:46:00 | INFO | mmf.common.test_reporter : Predicting for hateful_memes
+2022-04-26T02:46:06 | INFO | mmf.trainers.core.evaluation_loop : Finished training. Loaded 17
+2022-04-26T02:46:06 | INFO | mmf.trainers.core.evaluation_loop :  -- skipped 0 batches.
+2022-04-26T02:46:06 | INFO | mmf.utils.checkpoint : Checkpoint save operation started!
+2022-04-26T02:46:18 | INFO | mmf.utils.checkpoint : Saving current checkpoint
+2022-04-26T02:46:31 | INFO | mmf.utils.checkpoint : Checkpoint save operation finished!
+2022-04-26T02:46:31 | INFO | mmf.trainers.callbacks.logistics : progress: 19000/22000, val/hateful_memes/cross_entropy: 2.9867, val/total_loss: 2.9867, val/hateful_memes/accuracy: 0.6704, val/hateful_memes/binary_f1: 0.4106, val/hateful_memes/roc_auc: 0.7099, num_updates: 19000, epoch: 72, iterations: 19000, max_updates: 22000, val_time: 31s 214ms, best_update: 9000, best_iteration: 9000, best_val/hateful_memes/roc_auc: 0.716680
+2022-04-26T02:48:10 | INFO | mmf.trainers.callbacks.logistics : progress: 19100/22000, train/hateful_memes/cross_entropy: 0.0000, train/hateful_memes/cross_entropy/avg: 0.0655, train/total_loss: 0.0000, train/total_loss/avg: 0.0655, max mem: 10794.0, experiment: run, epoch: 72, num_updates: 19100, iterations: 19100, max_updates: 22000, lr: 0., ups: 1.02, time: 01m 38s 962ms, time_since_start: 05h 27m 02s 613ms, eta: 48m 38s 714ms
+2022-04-26T02:49:47 | INFO | mmf.trainers.callbacks.logistics : progress: 19200/22000, train/hateful_memes/cross_entropy: 0.0000, train/hateful_memes/cross_entropy/avg: 0.0651, train/total_loss: 0.0000, train/total_loss/avg: 0.0651, max mem: 10794.0, experiment: run, epoch: 73, num_updates: 19200, iterations: 19200, max_updates: 22000, lr: 0., ups: 1.03, time: 01m 37s 622ms, time_since_start: 05h 28m 40s 235ms, eta: 46m 19s 903ms
+2022-04-26T02:51:24 | INFO | mmf.trainers.callbacks.logistics : progress: 19300/22000, train/hateful_memes/cross_entropy: 0.0000, train/hateful_memes/cross_entropy/avg: 0.0648, train/total_loss: 0.0000, train/total_loss/avg: 0.0648, max mem: 10794.0, experiment: run, epoch: 73, num_updates: 19300, iterations: 19300, max_updates: 22000, lr: 0., ups: 1.04, time: 01m 36s 937ms, time_since_start: 05h 30m 17s 173ms, eta: 44m 21s 809ms
+2022-04-26T02:53:01 | INFO | mmf.trainers.callbacks.logistics : progress: 19400/22000, train/hateful_memes/cross_entropy: 0.0000, train/hateful_memes/cross_entropy/avg: 0.0644, train/total_loss: 0.0000, train/total_loss/avg: 0.0644, max mem: 10794.0, experiment: run, epoch: 73, num_updates: 19400, iterations: 19400, max_updates: 22000, lr: 0., ups: 1.04, time: 01m 36s 830ms, time_since_start: 05h 31m 54s 004ms, eta: 42m 40s 403ms
+2022-04-26T02:54:37 | INFO | mmf.trainers.callbacks.logistics : progress: 19500/22000, train/hateful_memes/cross_entropy: 0.0000, train/hateful_memes/cross_entropy/avg: 0.0641, train/total_loss: 0.0000, train/total_loss/avg: 0.0641, max mem: 10794.0, experiment: run, epoch: 74, num_updates: 19500, iterations: 19500, max_updates: 22000, lr: 0., ups: 1.04, time: 01m 36s 317ms, time_since_start: 05h 33m 30s 321ms, eta: 40m 48s 870ms
+2022-04-26T02:56:14 | INFO | mmf.trainers.callbacks.logistics : progress: 19600/22000, train/hateful_memes/cross_entropy: 0.0000, train/hateful_memes/cross_entropy/avg: 0.0638, train/total_loss: 0.0000, train/total_loss/avg: 0.0638, max mem: 10794.0, experiment: run, epoch: 74, num_updates: 19600, iterations: 19600, max_updates: 22000, lr: 0., ups: 1.04, time: 01m 36s 622ms, time_since_start: 05h 35m 06s 944ms, eta: 39m 18s 372ms
+2022-04-26T02:57:50 | INFO | mmf.trainers.callbacks.logistics : progress: 19700/22000, train/hateful_memes/cross_entropy: 0.0000, train/hateful_memes/cross_entropy/avg: 0.0635, train/total_loss: 0.0000, train/total_loss/avg: 0.0635, max mem: 10794.0, experiment: run, epoch: 75, num_updates: 19700, iterations: 19700, max_updates: 22000, lr: 0., ups: 1.05, time: 01m 35s 940ms, time_since_start: 05h 36m 42s 885ms, eta: 37m 24s 136ms
+2022-04-26T02:59:26 | INFO | mmf.trainers.callbacks.logistics : progress: 19800/22000, train/hateful_memes/cross_entropy: 0.0000, train/hateful_memes/cross_entropy/avg: 0.0631, train/total_loss: 0.0000, train/total_loss/avg: 0.0631, max mem: 10794.0, experiment: run, epoch: 75, num_updates: 19800, iterations: 19800, max_updates: 22000, lr: 0., ups: 1.04, time: 01m 36s 333ms, time_since_start: 05h 38m 19s 218ms, eta: 35m 55s 368ms
+2022-04-26T03:01:03 | INFO | mmf.trainers.callbacks.logistics : progress: 19900/22000, train/hateful_memes/cross_entropy: 0.0000, train/hateful_memes/cross_entropy/avg: 0.0628, train/total_loss: 0.0000, train/total_loss/avg: 0.0628, max mem: 10794.0, experiment: run, epoch: 75, num_updates: 19900, iterations: 19900, max_updates: 22000, lr: 0., ups: 1.04, time: 01m 36s 247ms, time_since_start: 05h 39m 55s 466ms, eta: 34m 15s 561ms
+2022-04-26T03:02:39 | INFO | mmf.trainers.callbacks.checkpoint : Checkpoint time. Saving a checkpoint.
+2022-04-26T03:02:39 | INFO | mmf.utils.checkpoint : Checkpoint save operation started!
+2022-04-26T03:02:50 | INFO | mmf.utils.checkpoint : Saving current checkpoint
+2022-04-26T03:03:04 | INFO | mmf.utils.checkpoint : Checkpoint save operation finished!
+2022-04-26T03:03:04 | INFO | mmf.trainers.callbacks.logistics : progress: 20000/22000, train/hateful_memes/cross_entropy: 0.0000, train/hateful_memes/cross_entropy/avg: 0.0625, train/total_loss: 0.0000, train/total_loss/avg: 0.0625, max mem: 10794.0, experiment: run, epoch: 76, num_updates: 20000, iterations: 20000, max_updates: 22000, lr: 0., ups: 0.83, time: 02m 974ms, time_since_start: 05h 41m 56s 440ms, eta: 41m 620ms
+2022-04-26T03:03:04 | INFO | mmf.trainers.core.training_loop : Evaluation time. Running on full validation set...
+2022-04-26T03:03:04 | INFO | mmf.common.test_reporter : Predicting for hateful_memes
+2022-04-26T03:03:10 | INFO | mmf.trainers.core.evaluation_loop : Finished training. Loaded 17
+2022-04-26T03:03:10 | INFO | mmf.trainers.core.evaluation_loop :  -- skipped 0 batches.
+2022-04-26T03:03:11 | INFO | mmf.utils.checkpoint : Checkpoint save operation started!
+2022-04-26T03:03:24 | INFO | mmf.utils.checkpoint : Saving current checkpoint
+2022-04-26T03:03:37 | INFO | mmf.utils.checkpoint : Checkpoint save operation finished!
+2022-04-26T03:03:37 | INFO | mmf.trainers.callbacks.logistics : progress: 20000/22000, val/hateful_memes/cross_entropy: 2.9533, val/total_loss: 2.9533, val/hateful_memes/accuracy: 0.6815, val/hateful_memes/binary_f1: 0.4452, val/hateful_memes/roc_auc: 0.7122, num_updates: 20000, epoch: 76, iterations: 20000, max_updates: 22000, val_time: 33s 211ms, best_update: 9000, best_iteration: 9000, best_val/hateful_memes/roc_auc: 0.716680
+2022-04-26T03:05:15 | INFO | mmf.trainers.callbacks.logistics : progress: 20100/22000, train/hateful_memes/cross_entropy: 0.0000, train/hateful_memes/cross_entropy/avg: 0.0622, train/total_loss: 0.0000, train/total_loss/avg: 0.0622, max mem: 10794.0, experiment: run, epoch: 76, num_updates: 20100, iterations: 20100, max_updates: 22000, lr: 0., ups: 1.02, time: 01m 38s 081ms, time_since_start: 05h 44m 07s 734ms, eta: 31m 35s 220ms
+2022-04-26T03:06:52 | INFO | mmf.trainers.callbacks.logistics : progress: 20200/22000, train/hateful_memes/cross_entropy: 0.0000, train/hateful_memes/cross_entropy/avg: 0.0619, train/total_loss: 0.0000, train/total_loss/avg: 0.0619, max mem: 10794.0, experiment: run, epoch: 76, num_updates: 20200, iterations: 20200, max_updates: 22000, lr: 0., ups: 1.04, time: 01m 36s 815ms, time_since_start: 05h 45m 44s 550ms, eta: 29m 32s 313ms
+2022-04-26T03:08:27 | INFO | mmf.trainers.callbacks.logistics : progress: 20300/22000, train/hateful_memes/cross_entropy: 0.0000, train/hateful_memes/cross_entropy/avg: 0.0616, train/total_loss: 0.0000, train/total_loss/avg: 0.0616, max mem: 10794.0, experiment: run, epoch: 77, num_updates: 20300, iterations: 20300, max_updates: 22000, lr: 0., ups: 1.05, time: 01m 35s 855ms, time_since_start: 05h 47m 20s 406ms, eta: 27m 37s 251ms
+2022-04-26T03:10:04 | INFO | mmf.trainers.callbacks.logistics : progress: 20400/22000, train/hateful_memes/cross_entropy: 0.0000, train/hateful_memes/cross_entropy/avg: 0.0613, train/total_loss: 0.0000, train/total_loss/avg: 0.0613, max mem: 10794.0, experiment: run, epoch: 77, num_updates: 20400, iterations: 20400, max_updates: 22000, lr: 0., ups: 1.04, time: 01m 36s 295ms, time_since_start: 05h 48m 56s 702ms, eta: 26m 06s 925ms
+2022-04-26T03:11:40 | INFO | mmf.trainers.callbacks.logistics : progress: 20500/22000, train/hateful_memes/cross_entropy: 0.0000, train/hateful_memes/cross_entropy/avg: 0.0610, train/total_loss: 0.0000, train/total_loss/avg: 0.0610, max mem: 10794.0, experiment: run, epoch: 78, num_updates: 20500, iterations: 20500, max_updates: 22000, lr: 0., ups: 1.04, time: 01m 36s 041ms, time_since_start: 05h 50m 32s 743ms, eta: 24m 25s 108ms
+2022-04-26T03:13:16 | INFO | mmf.trainers.callbacks.logistics : progress: 20600/22000, train/hateful_memes/cross_entropy: 0.0000, train/hateful_memes/cross_entropy/avg: 0.0607, train/total_loss: 0.0000, train/total_loss/avg: 0.0607, max mem: 10794.0, experiment: run, epoch: 78, num_updates: 20600, iterations: 20600, max_updates: 22000, lr: 0., ups: 1.04, time: 01m 36s 383ms, time_since_start: 05h 52m 09s 127ms, eta: 22m 52s 315ms
+2022-04-26T03:14:53 | INFO | mmf.trainers.callbacks.logistics : progress: 20700/22000, train/hateful_memes/cross_entropy: 0.0000, train/hateful_memes/cross_entropy/avg: 0.0604, train/total_loss: 0.0000, train/total_loss/avg: 0.0604, max mem: 10794.0, experiment: run, epoch: 78, num_updates: 20700, iterations: 20700, max_updates: 22000, lr: 0., ups: 1.04, time: 01m 36s 524ms, time_since_start: 05h 53m 45s 652ms, eta: 21m 16s 155ms
+2022-04-26T03:16:29 | INFO | mmf.trainers.callbacks.logistics : progress: 20800/22000, train/hateful_memes/cross_entropy: 0.0000, train/hateful_memes/cross_entropy/avg: 0.0601, train/total_loss: 0.0000, train/total_loss/avg: 0.0601, max mem: 10794.0, experiment: run, epoch: 79, num_updates: 20800, iterations: 20800, max_updates: 22000, lr: 0., ups: 1.04, time: 01m 36s 277ms, time_since_start: 05h 55m 21s 930ms, eta: 19m 34s 975ms
+2022-04-26T03:18:06 | INFO | mmf.trainers.callbacks.logistics : progress: 20900/22000, train/hateful_memes/cross_entropy: 0.0000, train/hateful_memes/cross_entropy/avg: 0.0598, train/total_loss: 0.0000, train/total_loss/avg: 0.0598, max mem: 10794.0, experiment: run, epoch: 79, num_updates: 20900, iterations: 20900, max_updates: 22000, lr: 0., ups: 1.04, time: 01m 36s 610ms, time_since_start: 05h 56m 58s 540ms, eta: 18m 780ms
+2022-04-26T03:19:42 | INFO | mmf.trainers.callbacks.checkpoint : Checkpoint time. Saving a checkpoint.
+2022-04-26T03:19:42 | INFO | mmf.utils.checkpoint : Checkpoint save operation started!
+2022-04-26T03:19:54 | INFO | mmf.utils.checkpoint : Saving current checkpoint
+2022-04-26T03:20:09 | INFO | mmf.utils.checkpoint : Checkpoint save operation finished!
+2022-04-26T03:20:09 | INFO | mmf.trainers.callbacks.logistics : progress: 21000/22000, train/hateful_memes/cross_entropy: 0.0000, train/hateful_memes/cross_entropy/avg: 0.0595, train/total_loss: 0.0000, train/total_loss/avg: 0.0595, max mem: 10794.0, experiment: run, epoch: 79, num_updates: 21000, iterations: 21000, max_updates: 22000, lr: 0., ups: 0.81, time: 02m 03s 139ms, time_since_start: 05h 59m 01s 680ms, eta: 20m 52s 332ms
+2022-04-26T03:20:09 | INFO | mmf.trainers.core.training_loop : Evaluation time. Running on full validation set...
+2022-04-26T03:20:09 | INFO | mmf.common.test_reporter : Predicting for hateful_memes
+2022-04-26T03:20:15 | INFO | mmf.trainers.core.evaluation_loop : Finished training. Loaded 17
+2022-04-26T03:20:15 | INFO | mmf.trainers.core.evaluation_loop :  -- skipped 0 batches.
+2022-04-26T03:20:16 | INFO | mmf.utils.checkpoint : Checkpoint save operation started!
+2022-04-26T03:20:29 | INFO | mmf.utils.checkpoint : Saving current checkpoint
+2022-04-26T03:20:39 | INFO | mmf.utils.checkpoint : Checkpoint save operation finished!
+2022-04-26T03:20:39 | INFO | mmf.trainers.callbacks.logistics : progress: 21000/22000, val/hateful_memes/cross_entropy: 2.9789, val/total_loss: 2.9789, val/hateful_memes/accuracy: 0.6778, val/hateful_memes/binary_f1: 0.4423, val/hateful_memes/roc_auc: 0.7101, num_updates: 21000, epoch: 79, iterations: 21000, max_updates: 22000, val_time: 30s 440ms, best_update: 9000, best_iteration: 9000, best_val/hateful_memes/roc_auc: 0.716680
+2022-04-26T03:22:17 | INFO | mmf.trainers.callbacks.logistics : progress: 21100/22000, train/hateful_memes/cross_entropy: 0.0000, train/hateful_memes/cross_entropy/avg: 0.0592, train/total_loss: 0.0000, train/total_loss/avg: 0.0592, max mem: 10794.0, experiment: run, epoch: 80, num_updates: 21100, iterations: 21100, max_updates: 22000, lr: 0., ups: 1.02, time: 01m 38s 247ms, time_since_start: 06h 01m 10s 371ms, eta: 14m 59s 259ms
+2022-04-26T03:23:55 | INFO | mmf.trainers.callbacks.logistics : progress: 21200/22000, train/hateful_memes/cross_entropy: 0.0000, train/hateful_memes/cross_entropy/avg: 0.0590, train/total_loss: 0.0000, train/total_loss/avg: 0.0590, max mem: 10794.0, experiment: run, epoch: 80, num_updates: 21200, iterations: 21200, max_updates: 22000, lr: 0., ups: 1.03, time: 01m 37s 267ms, time_since_start: 06h 02m 47s 639ms, eta: 13m 11s 372ms
+2022-04-26T03:25:31 | INFO | mmf.trainers.callbacks.logistics : progress: 21300/22000, train/hateful_memes/cross_entropy: 0.0000, train/hateful_memes/cross_entropy/avg: 0.0587, train/total_loss: 0.0000, train/total_loss/avg: 0.0587, max mem: 10794.0, experiment: run, epoch: 81, num_updates: 21300, iterations: 21300, max_updates: 22000, lr: 0., ups: 1.04, time: 01m 36s 075ms, time_since_start: 06h 04m 23s 715ms, eta: 11m 23s 963ms
+2022-04-26T03:27:07 | INFO | mmf.trainers.callbacks.logistics : progress: 21400/22000, train/hateful_memes/cross_entropy: 0.0000, train/hateful_memes/cross_entropy/avg: 0.0584, train/total_loss: 0.0000, train/total_loss/avg: 0.0584, max mem: 10794.0, experiment: run, epoch: 81, num_updates: 21400, iterations: 21400, max_updates: 22000, lr: 0., ups: 1.04, time: 01m 36s 484ms, time_since_start: 06h 06m 199ms, eta: 09m 48s 748ms
+2022-04-26T03:28:44 | INFO | mmf.trainers.callbacks.logistics : progress: 21500/22000, train/hateful_memes/cross_entropy: 0.0000, train/hateful_memes/cross_entropy/avg: 0.0581, train/total_loss: 0.0000, train/total_loss/avg: 0.0581, max mem: 10794.0, experiment: run, epoch: 81, num_updates: 21500, iterations: 21500, max_updates: 22000, lr: 0., ups: 1.04, time: 01m 36s 518ms, time_since_start: 06h 07m 36s 717ms, eta: 08m 10s 795ms
+2022-04-26T03:30:20 | INFO | mmf.trainers.callbacks.logistics : progress: 21600/22000, train/hateful_memes/cross_entropy: 0.0000, train/hateful_memes/cross_entropy/avg: 0.0579, train/total_loss: 0.0000, train/total_loss/avg: 0.0579, max mem: 10794.0, experiment: run, epoch: 82, num_updates: 21600, iterations: 21600, max_updates: 22000, lr: 0., ups: 1.04, time: 01m 36s 326ms, time_since_start: 06h 09m 13s 044ms, eta: 06m 31s 856ms
+2022-04-26T03:31:56 | INFO | mmf.trainers.callbacks.logistics : progress: 21700/22000, train/hateful_memes/cross_entropy: 0.0000, train/hateful_memes/cross_entropy/avg: 0.0576, train/total_loss: 0.0000, train/total_loss/avg: 0.0576, max mem: 10794.0, experiment: run, epoch: 82, num_updates: 21700, iterations: 21700, max_updates: 22000, lr: 0., ups: 1.04, time: 01m 36s 317ms, time_since_start: 06h 10m 49s 361ms, eta: 04m 53s 864ms
+2022-04-26T03:33:33 | INFO | mmf.trainers.callbacks.logistics : progress: 21800/22000, train/hateful_memes/cross_entropy: 0.0000, train/hateful_memes/cross_entropy/avg: 0.0573, train/total_loss: 0.0000, train/total_loss/avg: 0.0573, max mem: 10794.0, experiment: run, epoch: 82, num_updates: 21800, iterations: 21800, max_updates: 22000, lr: 0., ups: 1.04, time: 01m 36s 375ms, time_since_start: 06h 12m 25s 737ms, eta: 03m 16s 027ms
+2022-04-26T03:35:09 | INFO | mmf.trainers.callbacks.logistics : progress: 21900/22000, train/hateful_memes/cross_entropy: 0.0000, train/hateful_memes/cross_entropy/avg: 0.0571, train/total_loss: 0.0000, train/total_loss/avg: 0.0571, max mem: 10794.0, experiment: run, epoch: 83, num_updates: 21900, iterations: 21900, max_updates: 22000, lr: 0., ups: 1.05, time: 01m 35s 720ms, time_since_start: 06h 14m 01s 457ms, eta: 01m 37s 347ms
+2022-04-26T03:36:45 | INFO | mmf.trainers.callbacks.checkpoint : Checkpoint time. Saving a checkpoint.
+2022-04-26T03:36:45 | INFO | mmf.utils.checkpoint : Checkpoint save operation started!
+2022-04-26T03:36:56 | INFO | mmf.utils.checkpoint : Saving current checkpoint
+2022-04-26T03:37:09 | INFO | mmf.utils.checkpoint : Checkpoint save operation finished!
+2022-04-26T03:37:09 | INFO | mmf.trainers.callbacks.logistics : progress: 22000/22000, train/hateful_memes/cross_entropy: 0.0000, train/hateful_memes/cross_entropy/avg: 0.0568, train/total_loss: 0.0000, train/total_loss/avg: 0.0568, max mem: 10794.0, experiment: run, epoch: 83, num_updates: 22000, iterations: 22000, max_updates: 22000, lr: 0., ups: 0.83, time: 02m 308ms, time_since_start: 06h 16m 01s 766ms, eta: 0ms
+2022-04-26T03:37:09 | INFO | mmf.trainers.core.training_loop : Evaluation time. Running on full validation set...
+2022-04-26T03:37:09 | INFO | mmf.common.test_reporter : Predicting for hateful_memes
+2022-04-26T03:37:17 | INFO | mmf.trainers.core.evaluation_loop : Finished training. Loaded 17
+2022-04-26T03:37:17 | INFO | mmf.trainers.core.evaluation_loop :  -- skipped 0 batches.
+2022-04-26T03:37:17 | INFO | mmf.utils.checkpoint : Checkpoint save operation started!
+2022-04-26T03:37:30 | INFO | mmf.utils.checkpoint : Saving current checkpoint
+2022-04-26T03:37:41 | INFO | mmf.utils.checkpoint : Checkpoint save operation finished!
+2022-04-26T03:37:41 | INFO | mmf.trainers.callbacks.logistics : progress: 22000/22000, val/hateful_memes/cross_entropy: 2.9733, val/total_loss: 2.9733, val/hateful_memes/accuracy: 0.6759, val/hateful_memes/binary_f1: 0.4409, val/hateful_memes/roc_auc: 0.7104, num_updates: 22000, epoch: 83, iterations: 22000, max_updates: 22000, val_time: 32s 633ms, best_update: 9000, best_iteration: 9000, best_val/hateful_memes/roc_auc: 0.716680
+2022-04-26T03:37:42 | INFO | mmf.trainers.core.training_loop : Stepping into final validation check
+2022-04-26T03:37:42 | INFO | mmf.utils.checkpoint : Restoring checkpoint
+2022-04-26T03:37:42 | INFO | mmf.utils.checkpoint : Loading checkpoint
+2022-04-26T03:38:07 | INFO | mmf.utils.checkpoint : Checkpoint loaded.
+2022-04-26T03:38:07 | INFO | mmf.utils.checkpoint : Current num updates: 9000
+2022-04-26T03:38:07 | INFO | mmf.utils.checkpoint : Current iteration: 9000
+2022-04-26T03:38:07 | INFO | mmf.utils.checkpoint : Current epoch: 34
+2022-04-26T03:38:11 | INFO | mmf.trainers.mmf_trainer : Starting inference on test set
+2022-04-26T03:38:11 | INFO | mmf.common.test_reporter : Predicting for hateful_memes
+2022-04-26T03:38:31 | INFO | mmf.trainers.core.evaluation_loop : Finished training. Loaded 63
+2022-04-26T03:38:31 | INFO | mmf.trainers.core.evaluation_loop :  -- skipped 0 batches.
+2022-04-26T03:38:31 | INFO | mmf.trainers.callbacks.logistics : progress: 9000/22000, test/hateful_memes/cross_entropy: 1.9607, test/total_loss: 1.9607, test/hateful_memes/accuracy: 0.7210, test/hateful_memes/binary_f1: 0.5668, test/hateful_memes/roc_auc: 0.7563
+2022-04-26T03:38:31 | INFO | mmf.trainers.callbacks.logistics : Finished run in 06h 17m 24s 342ms
